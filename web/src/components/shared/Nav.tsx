@@ -11,7 +11,7 @@ const LINKS = [
 ];
 
 const MAILTO =
-  "mailto:hello@quickfilms.in?subject=Start%20a%20project%20with%20Quick%20Films";
+  "mailto:hello@quickfilms.co?subject=Start%20a%20project%20with%20Quick%20Films";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);

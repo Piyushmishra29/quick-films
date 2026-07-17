@@ -7,7 +7,7 @@ import SectionRule from "./SectionRule";
  * stays the single strong signal. Entrance uses the shared Reveal (beat 2).
  */
 const MAILTO =
-  "mailto:hello@quickfilms.in?subject=Start%20a%20project%20with%20Quick%20Films";
+  "mailto:hello@quickfilms.co?subject=Start%20a%20project%20with%20Quick%20Films";
 
 export default function StatementCTA() {
   return (
@@ -50,7 +50,7 @@ export default function StatementCTA() {
                 href={MAILTO}
                 className="text-text underline decoration-white/25 underline-offset-4 transition-colors hover:decoration-red"
               >
-                hello@quickfilms.in
+                hello@quickfilms.co
               </a>
             </span>
           </div>

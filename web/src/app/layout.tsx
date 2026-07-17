@@ -11,7 +11,7 @@ const SITE_DESCRIPTION =
 
 export const metadata: Metadata = {
   // NOTE: domain is provisional — client has not confirmed the final URL.
-  metadataBase: new URL("https://quickfilms.in"),
+  metadataBase: new URL("https://quickfilms.co"),
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   openGraph: {

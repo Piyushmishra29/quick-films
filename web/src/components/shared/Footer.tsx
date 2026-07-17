@@ -2,7 +2,7 @@ import Link from "next/link";
 import Wordmark from "./Wordmark";
 
 const MAILTO =
-  "mailto:hello@quickfilms.in?subject=Start%20a%20project%20with%20Quick%20Films";
+  "mailto:hello@quickfilms.co?subject=Start%20a%20project%20with%20Quick%20Films";
 // WhatsApp — client's real number not confirmed yet. Set to a full
 // international number (e.g. "https://wa.me/9198XXXXXXXX") to surface the link.
 const WHATSAPP: string | null = null;
@@ -62,7 +62,7 @@ export default function Footer() {
               href={MAILTO}
               className="block text-lg text-text transition-colors duration-200 hover:text-red"
             >
-              hello@quickfilms.in
+              hello@quickfilms.co
             </a>
             {WHATSAPP && (
               <a
