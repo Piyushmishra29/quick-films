@@ -13,3 +13,6 @@ assets/web-encodes/
 
 # local review screenshots (heavy, regenerate anytime)
 docs/review/
+
+# client source stills (124MB) — web-optimized copies live in web/public/stills
+assets/stills/

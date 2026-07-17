@@ -1,0 +1,37 @@
+import Reveal from "@/components/shared/Reveal";
+import SectionRule from "@/components/home/SectionRule";
+
+/**
+ * Case-page frame strip. Renders a small row of frame grabs (from the film's
+ * `stills`), each framed with the sitewide `.qf-frame` viewfinder brackets.
+ * Fixed-height tiles keep their natural aspect, so mixed landscape/portrait
+ * grabs sit together like a real filmstrip. Only rendered when the film has
+ * stills, so pages without any skip the section (and its index) entirely.
+ */
+export default function CaseFrames({
+  stills,
+  index,
+}: {
+  stills: string[];
+  index: string;
+}) {
+  return (
+    <Reveal as="section" className="mb-16 md:mb-24">
+      <SectionRule index={index} label="Frames" meta={`${stills.length} Stills`} />
+      <div className="mt-10 flex flex-wrap justify-center gap-6 md:mt-12 md:gap-10">
+        {stills.map((src) => (
+          <div key={src} className="qf-frame">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={src}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="h-52 w-auto max-w-full object-cover ring-1 ring-white/8 md:h-64"
+            />
+          </div>
+        ))}
+      </div>
+    </Reveal>
+  );
+}

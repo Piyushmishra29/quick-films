@@ -1,4 +1,5 @@
 import Reveal from "@/components/shared/Reveal";
+import SectionRule from "@/components/home/SectionRule";
 
 /**
  * Editorial description block. Strips a leading "DRAFT —" marker if the
@@ -13,11 +14,12 @@ export default function CaseDescription({
   const clean = description.replace(/^DRAFT\s*—\s*/i, "").trim();
 
   return (
-    <Reveal as="section" className="mx-auto mb-16 max-w-2xl md:mb-24">
-      <p className="text-lg leading-relaxed text-text/90 md:text-xl">
+    <Reveal as="section" className="mb-16 md:mb-24">
+      <SectionRule index="02" label="The Edit" />
+      <p className="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-text/90 md:mt-12 md:text-xl">
         {clean}
       </p>
-      <p className="mt-4 text-sm italic text-muted">
+      <p className="mx-auto mt-4 max-w-2xl text-sm italic text-muted">
         Draft copy — to be confirmed
       </p>
     </Reveal>

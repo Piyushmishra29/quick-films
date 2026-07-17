@@ -13,6 +13,7 @@ export type Film = {
   video: string; // "/films/<slug>.mp4"
   poster: string; // "/films/<slug>.jpg"
   aspect: "9/16";
+  stills?: string[]; // optional frame grabs shown as a "FRAMES" strip on the case page
 };
 
 export const films: Film[] = [
@@ -48,6 +49,7 @@ export const films: Film[] = [
     video: "/films/kathakali.mp4",
     poster: "/films/kathakali.jpg",
     aspect: "9/16",
+    stills: ["/stills/kathakali-still-1.jpg", "/stills/kathakali-still-2.jpg"],
   },
   {
     slug: "niko-theyyam",
@@ -65,6 +67,7 @@ export const films: Film[] = [
     video: "/films/niko-theyyam.mp4",
     poster: "/films/niko-theyyam.jpg",
     aspect: "9/16",
+    stills: ["/stills/niko-fire.jpg", "/stills/niko-night.jpg"],
   },
   {
     slug: "pe",

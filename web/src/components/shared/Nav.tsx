@@ -5,9 +5,9 @@ import { useState } from "react";
 import Wordmark from "./Wordmark";
 
 const LINKS = [
-  { label: "Work", href: "/work/" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Work", href: "/work/", num: "01" },
+  { label: "About", href: "/#about", num: "02" },
+  { label: "Contact", href: "/#contact", num: "03" },
 ];
 
 const MAILTO =
@@ -21,15 +21,18 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10 md:py-6">
         <Wordmark className="text-xl md:text-2xl" href="/" />
 
-        <div className="flex items-center gap-4 md:gap-8">
-          <ul className="hidden items-center gap-6 text-sm text-muted sm:flex md:gap-8">
+        <div className="flex items-center gap-4 md:gap-10">
+          <ul className="hidden items-center gap-7 text-sm text-muted sm:flex md:gap-9">
             {LINKS.map((l) => (
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="transition-colors duration-200 hover:text-text"
+                  className="group inline-flex items-start gap-1 transition-colors duration-200 hover:text-text"
                 >
-                  {l.label}
+                  <span>{l.label}</span>
+                  <span className="text-[10px] leading-none text-muted/60 transition-colors duration-200 group-hover:text-yellow">
+                    {l.num}
+                  </span>
                 </Link>
               </li>
             ))}
@@ -37,8 +40,9 @@ export default function Nav() {
 
           <a
             href={MAILTO}
-            className="rounded-full bg-red px-4 py-2 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 md:px-5"
+            className="inline-flex items-center gap-2 rounded-full bg-red px-4 py-2 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 md:px-5"
           >
+            <span className="h-1.5 w-1.5 rounded-full bg-white" />
             Start a project
           </a>
 
@@ -78,9 +82,10 @@ export default function Nav() {
               <Link
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block py-3 text-sm uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:text-text"
+                className="flex items-center justify-between py-3 text-sm uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:text-text"
               >
-                {l.label}
+                <span>{l.label}</span>
+                <span className="text-[10px] text-muted/60">{l.num}</span>
               </Link>
             </li>
           ))}

@@ -88,3 +88,96 @@ html.lenis body {
     scroll-behavior: auto;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Reference-aligned section furniture (additive)
+   Ruler ticks, title marquee, registration corners, hairline meta rows.
+--------------------------------------------------------------------------- */
+
+/* Thin timeline ruler: evenly spaced short tick marks along a hairline. */
+.qf-ticks {
+  height: 10px;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(237, 238, 234, 0.28) 0,
+    rgba(237, 238, 234, 0.28) 1px,
+    transparent 1px,
+    transparent 28px
+  );
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  border-top: 1px solid rgba(237, 238, 234, 0.14);
+}
+
+/* Registration crosshair used sparingly over cinematic sections. */
+.qf-plus {
+  color: rgba(237, 238, 234, 0.35);
+  font-weight: 300;
+  user-select: none;
+}
+
+/* Four corner brackets framing a media block (like a viewfinder). */
+.qf-frame {
+  position: relative;
+}
+.qf-frame::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  pointer-events: none;
+  --c: rgba(237, 238, 234, 0.55);
+  --s: 22px;
+  --t: 1px;
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / var(--s) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 0 / var(--t) var(--s) no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / var(--s) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 0 / var(--t) var(--s) no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / var(--s) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) 0 100% / var(--t) var(--s) no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / var(--s) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) 100% 100% / var(--t) var(--s) no-repeat;
+}
+
+/* Slow horizontal title marquee (repeated project title). */
+.qf-marquee {
+  display: flex;
+  width: max-content;
+  animation: qf-marquee-x 26s linear infinite;
+  will-change: transform;
+}
+@keyframes qf-marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qf-marquee {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Selected-frames band — a slow filmstrip drift (ambient texture, same family
+   as the title marquee above). The track holds two identical copies of the
+   row, so a -50% translate loops seamlessly. Reversed variant drifts the
+   opposite way. prefers-reduced-motion pins it still. */
+.qf-filmstrip {
+  display: flex;
+  width: max-content;
+  animation: qf-marquee-x 90s linear infinite;
+  will-change: transform;
+}
+.qf-filmstrip--rev {
+  animation-direction: reverse;
+  animation-duration: 105s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .qf-filmstrip {
+    animation: none;
+    transform: none;
+  }
+}

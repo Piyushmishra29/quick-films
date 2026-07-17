@@ -4,6 +4,7 @@ import { films, getFilm } from "@/lib/films";
 import CaseHeader from "@/components/case/CaseHeader";
 import CasePlayer from "@/components/case/CasePlayer";
 import CaseDescription from "@/components/case/CaseDescription";
+import CaseFrames from "@/components/case/CaseFrames";
 import CaseCredits from "@/components/case/CaseCredits";
 import CaseNav from "@/components/case/CaseNav";
 
@@ -45,13 +46,19 @@ export default async function CasePage({
   const prev = films[(index - 1 + films.length) % films.length];
   const next = films[(index + 1) % films.length];
 
+  // Section numbering shifts by one when the film carries a FRAMES strip.
+  const hasFrames = !!film.stills && film.stills.length > 0;
+  const creditsIndex = hasFrames ? "04" : "03";
+  const navIndex = hasFrames ? "05" : "04";
+
   return (
     <article className="mx-auto max-w-[1600px] px-5 pb-24 pt-32 md:px-10 md:pb-32">
       <CaseHeader film={film} />
       <CasePlayer film={film} />
       <CaseDescription description={film.description} />
-      <CaseCredits credits={film.credits} />
-      <CaseNav prev={prev} next={next} />
+      {hasFrames && <CaseFrames stills={film.stills!} index="03" />}
+      <CaseCredits credits={film.credits} index={creditsIndex} />
+      <CaseNav prev={prev} next={next} index={navIndex} />
     </article>
   );
 }
