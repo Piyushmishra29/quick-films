@@ -47,8 +47,8 @@ export default function About() {
             <div className="qf-frame mb-10 w-full max-w-[260px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/stills/about-bartender.jpg"
-                alt="A bartender cutting ice behind the bar — a graded frame from Quick Films footage"
+                src="/stills/about-craft.jpg"
+                alt="A chef at work in a low-lit kitchen — a graded frame from Quick Films footage"
                 loading="lazy"
                 className="aspect-[3/4] w-full object-cover ring-1 ring-white/8"
               />
