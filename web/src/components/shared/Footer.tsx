@@ -102,7 +102,12 @@ export default function Footer() {
       <div className="mx-auto max-w-[1600px] overflow-hidden px-5 pt-6 md:px-10">
         <Wordmark
           href={null}
-          className="block text-[19vw] leading-[0.8] md:text-[16vw]"
+          className="block leading-[0.8]"
+          style={{
+            // "quickFILMS" measures ~6.25em wide; size it from the padded
+            // container so the whole word fits every viewport (no clipped "S").
+            fontSize: "clamp(2rem, calc((100vw - 2.5rem) / 6.5), 15rem)",
+          }}
         />
       </div>
 

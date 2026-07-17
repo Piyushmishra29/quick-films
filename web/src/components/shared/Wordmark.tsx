@@ -8,13 +8,16 @@ import Link from "next/link";
 export default function Wordmark({
   className = "",
   href = "/",
+  style,
 }: {
   className?: string;
   href?: string | null;
+  style?: React.CSSProperties;
 }) {
   const content = (
     <span
       className={`inline-flex items-baseline gap-[0.15em] font-display leading-none ${className}`}
+      style={style}
       aria-label="Quick Films"
     >
       <span className="font-light italic tracking-tight text-text">quick</span>
