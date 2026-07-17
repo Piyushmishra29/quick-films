@@ -13,7 +13,7 @@ export default function StatementCTA() {
   return (
     <section
       aria-labelledby="cta-heading"
-      className="py-24 md:py-36"
+      className="py-16 md:py-36"
     >
       <Reveal>
         <SectionRule

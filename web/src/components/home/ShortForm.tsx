@@ -270,7 +270,7 @@ export default function ShortForm() {
       ref={sectionRef}
       id="short-form"
       aria-labelledby="short-form-heading"
-      className="scroll-mt-24 overflow-hidden py-20 md:py-28"
+      className="scroll-mt-24 overflow-hidden py-14 md:py-28"
     >
       <Reveal>
         <SectionRule

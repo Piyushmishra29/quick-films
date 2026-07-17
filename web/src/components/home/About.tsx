@@ -19,7 +19,7 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="scroll-mt-24 py-20 md:py-28"
+      className="scroll-mt-24 py-14 md:py-28"
     >
       <Reveal>
         <SectionRule

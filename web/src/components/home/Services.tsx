@@ -39,7 +39,7 @@ export default function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="scroll-mt-24 py-20 md:py-28"
+      className="scroll-mt-24 py-14 md:py-28"
     >
       <Reveal>
         <SectionRule

@@ -13,7 +13,7 @@ export default function WorkReel() {
     <section
       id="work"
       aria-labelledby="work-heading"
-      className="scroll-mt-24 py-20 md:py-28"
+      className="scroll-mt-24 py-14 md:py-28"
     >
       <Reveal className="mx-auto max-w-[1600px] px-5 md:px-10">
         <header className="flex items-end justify-between">

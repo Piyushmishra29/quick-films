@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Wordmark from "./Wordmark";
 
 const LINKS = [
@@ -15,9 +15,25 @@ const MAILTO =
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Give the bar a solid, blurred backdrop once the hero is scrolled past, so
+  // page content never collides with the transparent nav on the way up.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled || open
+          ? "border-white/5 bg-bg/80 backdrop-blur-md"
+          : "border-transparent"
+      }`}
+    >
       <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10 md:py-6">
         <Wordmark className="text-xl md:text-2xl" href="/" />
 
@@ -40,7 +56,7 @@ export default function Nav() {
 
           <a
             href={MAILTO}
-            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-red-cta px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-red-cta-hover md:px-5"
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-red-cta px-4 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-red-cta-hover md:px-5 md:py-2"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-white" />
             Start a project
@@ -53,7 +69,7 @@ export default function Nav() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] sm:hidden"
+            className="-mr-2 flex h-11 w-11 flex-col items-center justify-center gap-[5px] sm:hidden"
           >
             <span
               className={`h-px w-5 bg-text transition-transform duration-200 ${

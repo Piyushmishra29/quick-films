@@ -62,7 +62,7 @@ export default function SelectedFrames() {
   return (
     <section
       aria-labelledby="frames-heading"
-      className="overflow-hidden py-20 md:py-28"
+      className="overflow-hidden py-14 md:py-28"
     >
       <Reveal>
         <SectionRule
