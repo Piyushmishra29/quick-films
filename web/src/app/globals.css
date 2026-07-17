@@ -9,7 +9,9 @@
   --surface: #141412; /* panels / cards */
   --text: #edeeea; /* warm off-white */
   --muted: #8a8a85; /* secondary text */
-  --red: #f5352b; /* brand red — primary accent */
+  --red: #f5352b; /* brand red — primary accent (non-text signals only) */
+  --red-cta: #d11f16; /* darker red usable BEHIND white text — #fff on it = 5.36:1 (AA) */
+  --red-cta-hover: #b01810; /* CTA hover — darker still, #fff on it = 7.04:1 */
   --yellow: #f5c518; /* brand yellow — secondary accent */
 }
 
@@ -21,6 +23,8 @@
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-red: var(--red);
+  --color-red-cta: var(--red-cta);
+  --color-red-cta-hover: var(--red-cta-hover);
   --color-yellow: var(--yellow);
 
   --font-display: var(--font-display);
@@ -87,6 +91,27 @@ html.lenis body {
   html {
     scroll-behavior: auto;
   }
+  /* Tailwind's animate-pulse ignores reduced-motion — pin it still. */
+  .animate-pulse {
+    animation: none !important;
+  }
+}
+
+/* Skip link — visually hidden until keyboard-focused (a11y). */
+.qf-skip {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  transition: top 0.2s ease;
+}
+.qf-skip:focus {
+  top: 1rem;
 }
 
 /* ---------------------------------------------------------------------------

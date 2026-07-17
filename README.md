@@ -2,7 +2,7 @@
 
 Website for **Quick Films** — a video-editing / short-form film studio.
 
-> Status: **planning / gathering assets** — not built yet.
+> Status: **built** — Next.js static export live in [`web/`](./web). Routes: `/` (home), `/work/` (index), `/work/[slug]/` (case pages).
 
 ## Brand
 See [`BRAND.md`](./BRAND.md) for the locked brand & type direction.
@@ -13,6 +13,7 @@ See [`BRAND.md`](./BRAND.md) for the locked brand & type direction.
 
 ## Structure
 ```
+web/                Next.js 16 static-export app (the site) — see web/README.md
 brand/              logo + brand marks
 assets/videos/      work-sample footage  (gitignored — large files, stored out-of-band)
 reference/          design reference      (gitignored — local only)

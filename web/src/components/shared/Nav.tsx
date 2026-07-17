@@ -30,7 +30,7 @@ export default function Nav() {
                   className="group inline-flex items-start gap-1 transition-colors duration-200 hover:text-text"
                 >
                   <span>{l.label}</span>
-                  <span className="text-[10px] leading-none text-muted/60 transition-colors duration-200 group-hover:text-yellow">
+                  <span className="text-[10px] leading-none text-muted transition-colors duration-200 group-hover:text-yellow">
                     {l.num}
                   </span>
                 </Link>
@@ -40,7 +40,7 @@ export default function Nav() {
 
           <a
             href={MAILTO}
-            className="inline-flex items-center gap-2 rounded-full bg-red px-4 py-2 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90 md:px-5"
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-red-cta px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-red-cta-hover md:px-5"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-white" />
             Start a project
@@ -85,7 +85,7 @@ export default function Nav() {
                 className="flex items-center justify-between py-3 text-sm uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:text-text"
               >
                 <span>{l.label}</span>
-                <span className="text-[10px] text-muted/60">{l.num}</span>
+                <span className="text-[10px] text-muted">{l.num}</span>
               </Link>
             </li>
           ))}

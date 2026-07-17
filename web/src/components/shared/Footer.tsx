@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
           <div>
             <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-muted">
-              <span className="text-muted/70">(00)</span> — Studio
+              <span className="text-muted">(00)</span> — Studio
             </p>
             <p className="max-w-sm text-lg leading-snug text-text">
               <span className="text-text">A film-grade</span> edit, colour and
@@ -38,7 +38,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-muted">
-              <span className="text-muted/70">(01)</span> — Navigation
+              <span className="text-muted">(01)</span> — Navigation
             </p>
             <ul className="space-y-3">
               {NAV.map((l) => (
@@ -56,7 +56,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-5 text-[11px] uppercase tracking-[0.22em] text-muted">
-              <span className="text-muted/70">(02)</span> — Get in touch
+              <span className="text-muted">(02)</span> — Get in touch
             </p>
             <a
               href={MAILTO}
@@ -77,7 +77,7 @@ export default function Footer() {
             <p className="mt-4 text-sm text-muted">Bengaluru · Remote worldwide</p>
             <a
               href={MAILTO}
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-red px-6 py-3 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-red-cta px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-red-cta-hover"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-white" />
               Start a project
@@ -96,8 +96,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Giant wordmark */}
-      <div className="mx-auto max-w-[1600px] px-5 pt-6 md:px-10">
+      {/* Giant wordmark — clip the right-edge bleed so the oversized type never
+          forces horizontal page scroll on narrow viewports (was ~38px over at
+          390px). Left-anchored; only the far-right tail clips. */}
+      <div className="mx-auto max-w-[1600px] overflow-hidden px-5 pt-6 md:px-10">
         <Wordmark
           href={null}
           className="block text-[19vw] leading-[0.8] md:text-[16vw]"

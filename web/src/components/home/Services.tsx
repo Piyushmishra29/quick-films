@@ -82,7 +82,7 @@ export default function Services() {
                     alt=""
                     aria-hidden="true"
                     loading="lazy"
-                    className="h-40 w-full max-w-[280px] shrink-0 rounded-md object-cover md:h-36"
+                    className="h-40 w-full max-w-[280px] shrink-0 rounded-md object-cover ring-1 ring-white/10 md:h-36"
                   />
                   <div
                     className={`flex-1 ${reversed ? "md:text-right" : ""}`}

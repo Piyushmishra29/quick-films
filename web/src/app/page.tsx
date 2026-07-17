@@ -11,9 +11,9 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ShortForm />
       <Stats />
       <WorkReel />
-      <ShortForm />
       <Services />
       <About />
       <SelectedFrames />

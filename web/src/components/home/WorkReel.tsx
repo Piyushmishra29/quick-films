@@ -39,7 +39,7 @@ export default function WorkReel() {
 
       <div className="mt-8 md:mt-12">
         {films.map((film, i) => (
-          <WorkFilm key={film.slug} film={film} index={i} />
+          <WorkFilm key={film.slug} film={film} index={i + 1} />
         ))}
       </div>
 

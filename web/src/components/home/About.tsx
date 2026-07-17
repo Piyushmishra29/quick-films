@@ -59,7 +59,7 @@ export default function About() {
               that move. Edited for rhythm, graded for mood, finished with type
               and motion. No noise, no filler; just the picture, cut well.
             </p>
-            <p className="mt-8 max-w-xl text-sm leading-relaxed text-muted/80">
+            <p className="mt-8 max-w-xl text-sm leading-relaxed text-muted">
               Same hands on every credit — from the first assembly to the final,
               graded frame.
             </p>

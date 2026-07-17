@@ -73,6 +73,9 @@ export default function CasePlayer({ film }: { film: Film }) {
             Your browser does not support embedded video.
           </video>
         </div>
+        <p className="mx-auto mt-3 max-w-[380px] text-center text-[11px] uppercase tracking-[0.22em] text-muted md:max-w-[420px]">
+          Captions not yet available for this film.
+        </p>
       </div>
     </Reveal>
   );

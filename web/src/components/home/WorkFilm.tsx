@@ -74,6 +74,7 @@ export default function WorkFilm({
       <Reveal className="mx-auto mt-12 flex max-w-[1600px] justify-center px-5 md:mt-16 md:px-10">
         <Link
           href={`/work/${film.slug}/`}
+          prefetch={false}
           className="group qf-frame block w-[min(78vw,340px)] focus:outline-none"
           onMouseEnter={canHover ? play : undefined}
           onMouseLeave={canHover ? stop : undefined}

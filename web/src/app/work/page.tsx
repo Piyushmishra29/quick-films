@@ -4,10 +4,27 @@ import Reveal from "@/components/shared/Reveal";
 import SectionRule from "@/components/home/SectionRule";
 import WorkRow from "@/components/work/WorkRow";
 
+const TITLE = "Work — Quick Films";
+const DESCRIPTION =
+  "Selected work from Quick Films — documentary, short-form, colour grade, and motion.";
+
 export const metadata: Metadata = {
-  title: "Work — Quick Films",
-  description:
-    "Selected work from Quick Films — documentary, short-form, colour grade, and motion.",
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Quick Films",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/work/",
+    images: [{ url: "/hero-desktop.jpg", width: 1600, height: 900, alt: "Quick Films" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/hero-desktop.jpg"],
+  },
 };
 
 // Decorative timecode ruler under the header — matches the ticks used

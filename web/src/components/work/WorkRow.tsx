@@ -21,10 +21,14 @@ export default function WorkRow({
   index: number;
 }) {
   const indexStr = String(index + 1).padStart(2, "0");
+  // Small ~300px crop for the tiny poster boxes (mobile card + desktop hover
+  // thumb) — the full poster is oversized for these ≤220px slots.
+  const thumb = film.poster.replace(/\.jpg$/, "-thumb.jpg");
 
   return (
     <Link
       href={`/work/${film.slug}/`}
+      prefetch={false}
       className="group relative flex items-center gap-5 border-b border-white/10 py-7 transition-colors duration-300 md:gap-8 md:py-9 md:hover:bg-white/[0.03]"
     >
       {/* Mobile poster — always visible; hidden md+ where it instead
@@ -34,7 +38,7 @@ export default function WorkRow({
       <div className="qf-frame w-24 shrink-0 sm:w-28 md:hidden">
         <div className="relative aspect-[9/16] overflow-hidden bg-surface">
           <Image
-            src={film.poster}
+            src={thumb}
             alt=""
             fill
             sizes="112px"
@@ -75,7 +79,7 @@ export default function WorkRow({
       >
         <div className="relative aspect-[9/16] overflow-hidden bg-surface">
           <Image
-            src={film.poster}
+            src={thumb}
             alt=""
             fill
             sizes="220px"

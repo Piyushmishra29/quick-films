@@ -26,7 +26,7 @@ export default function SectionRule({
       </div>
       <div className="mt-4 flex items-baseline justify-between text-[11px] uppercase tracking-[0.22em] text-muted">
         <span>
-          <span className="text-muted/70">({index})</span>{" "}
+          <span className="text-muted">({index})</span>{" "}
           <span className="mx-1">—</span> {label}
         </span>
         {meta && <span className="tabular-nums">{meta}</span>}

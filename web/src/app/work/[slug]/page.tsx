@@ -23,10 +23,25 @@ export async function generateMetadata({
   if (!film) return {};
 
   const description = film.description.replace(/^DRAFT\s*—\s*/i, "").trim();
+  const title = `${film.title} — Quick Films`;
 
   return {
-    title: `${film.title} — Quick Films`,
+    title,
     description,
+    openGraph: {
+      type: "article",
+      siteName: "Quick Films",
+      title,
+      description,
+      url: `/work/${film.slug}/`,
+      images: [{ url: film.poster, alt: film.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [film.poster],
+    },
   };
 }
 

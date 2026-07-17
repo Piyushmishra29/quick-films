@@ -58,11 +58,17 @@ export default function Hero() {
     >
       {/* Full-bleed cinematic frame from our own footage */}
       <picture>
-        <source srcSet="/hero@2x.jpg" media="(min-width: 900px)" />
+        {/* Desktop: a wide corridor frame that fills the landscape canvas.
+            Mobile: a tall Kathakali portrait that fits a phone's aspect. */}
+        <source
+          media="(min-width: 900px)"
+          srcSet="/hero-desktop.jpg 1x, /hero-desktop@2x.jpg 2x"
+        />
+        <source srcSet="/hero-mobile.jpg 1x, /hero-mobile@2x.jpg 2x" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/hero.jpg"
-          alt="A Kathakali performer in full costume at golden hour — a frame from Quick Films footage"
+          src="/hero-mobile.jpg"
+          alt="A cinematic frame from Quick Films footage"
           className="absolute inset-0 h-full w-full object-cover object-center"
           fetchPriority="high"
         />
@@ -108,7 +114,7 @@ export default function Hero() {
         <div className="mt-auto grid grid-cols-1 items-end gap-10 pb-8 sm:grid-cols-2 md:pb-10">
           <motion.div variants={mv(fade)}>
             <p className="mb-4 text-[11px] uppercase tracking-[0.22em] text-muted">
-              <span className="text-muted/70">(01)</span> — Services
+              — Services
             </p>
             <ul className="space-y-1.5">
               {SERVICES.map((s) => (
@@ -144,7 +150,11 @@ export default function Hero() {
             <motion.span
               variants={mv(line)}
               className="block whitespace-nowrap"
-              style={{ fontSize: "clamp(3rem, 13.5vw, 15rem)" }}
+              style={{
+                // Wordmark measures ~7.06em wide at this weight/tracking; size it
+                // from the padded container (max 1600px) so it never clips.
+                fontSize: "clamp(2.75rem, calc((100vw - 5rem) / 7.2), 13.2rem)",
+              }}
             >
               Quick Films
             </motion.span>

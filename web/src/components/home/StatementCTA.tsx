@@ -39,7 +39,7 @@ export default function StatementCTA() {
           <div className="mt-12 flex flex-col items-start gap-6 sm:flex-row sm:items-center md:mt-16">
             <a
               href={MAILTO}
-              className="inline-flex items-center gap-2 rounded-full bg-red px-7 py-3.5 text-sm font-medium text-white transition-opacity duration-200 hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-red-cta px-7 py-3.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-red-cta-hover"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-white" />
               Start a project
