@@ -12,11 +12,11 @@ export default function Home() {
     <>
       <Hero />
       <ShortForm />
+      <SelectedFrames />
       <Stats />
       <WorkReel />
       <Services />
       <About />
-      <SelectedFrames />
       <StatementCTA />
     </>
   );

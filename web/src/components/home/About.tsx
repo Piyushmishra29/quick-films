@@ -23,7 +23,7 @@ export default function About() {
     >
       <Reveal>
         <SectionRule
-          index="07"
+          index="08"
           label="Studio"
           meta="Est. 2026"
           className="mx-auto max-w-[1600px] px-5 md:px-10"

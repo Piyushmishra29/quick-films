@@ -66,7 +66,7 @@ export default function SelectedFrames() {
     >
       <Reveal>
         <SectionRule
-          index="08"
+          index="02"
           label="Selected Frames"
           meta="2024–2026"
           className="mx-auto max-w-[1600px] px-5 md:px-10"

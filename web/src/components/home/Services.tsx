@@ -43,7 +43,7 @@ export default function Services() {
     >
       <Reveal>
         <SectionRule
-          index="06"
+          index="07"
           label="Services"
           meta="What we do"
           className="mx-auto max-w-[1600px] px-5 md:px-10"
