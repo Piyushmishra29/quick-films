@@ -1,0 +1,9 @@
+# Heavy video source — exceeds GitHub's 100MB file limit. Store out-of-band.
+assets/videos/
+
+# Scraped third-party reference site (copyright) — local only.
+reference/
+
+# OS / tooling
+.DS_Store
+node_modules/
