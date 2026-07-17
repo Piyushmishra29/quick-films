@@ -56,23 +56,30 @@ export default function Hero() {
       initial={reduce ? undefined : "hidden"}
       animate={reduce ? undefined : "show"}
     >
-      {/* Full-bleed cinematic frame from our own footage */}
-      <picture>
-        {/* Desktop: a wide corridor frame that fills the landscape canvas.
-            Mobile: a tall Kathakali portrait that fits a phone's aspect. */}
-        <source
-          media="(min-width: 900px)"
-          srcSet="/hero-desktop.jpg 1x, /hero-desktop@2x.jpg 2x"
-        />
-        <source srcSet="/hero-mobile.jpg 1x, /hero-mobile@2x.jpg 2x" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/hero-mobile.jpg"
-          alt="A cinematic frame from Quick Films footage"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          fetchPriority="high"
-        />
-      </picture>
+      {/* Full-bleed cinematic frames from our own footage.
+          Desktop (>=768px): three vertical film-strips side by side.
+          Mobile: a single tall composite. */}
+      <div className="absolute inset-0 hidden grid-cols-3 md:grid" aria-hidden="true">
+        {[1, 2, 3].map((n) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={n}
+            src={`/hero-strip-${n}.jpg`}
+            srcSet={`/hero-strip-${n}.jpg 1x, /hero-strip-${n}@2x.jpg 2x`}
+            alt=""
+            className="h-full w-full object-cover object-top"
+            fetchPriority="high"
+          />
+        ))}
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/hero-mobile.jpg"
+        srcSet="/hero-mobile.jpg 1x, /hero-mobile@2x.jpg 2x"
+        alt="A cinematic frame from Quick Films footage"
+        className="absolute inset-0 h-full w-full object-cover object-center md:hidden"
+        fetchPriority="high"
+      />
       {/* Scrims: darken top for nav/ruler, bottom for the wordmark, and a
           global tint so the bright bokeh never fights the type. */}
       <div className="absolute inset-0 bg-black/25" aria-hidden="true" />
