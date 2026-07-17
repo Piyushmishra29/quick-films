@@ -7,3 +7,9 @@ reference/
 # OS / tooling
 .DS_Store
 node_modules/
+
+# build intermediates (duplicates of web/public/films)
+assets/web-encodes/
+
+# local review screenshots (heavy, regenerate anytime)
+docs/review/

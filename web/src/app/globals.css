@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Quick Films — design tokens (spec: 2026-07-17-quick-films-site-design.md)
+   The site is dark, period. No light mode.
+--------------------------------------------------------------------------- */
+:root {
+  --bg: #0a0a0a; /* near-black page */
+  --surface: #141412; /* panels / cards */
+  --text: #edeeea; /* warm off-white */
+  --muted: #8a8a85; /* secondary text */
+  --red: #f5352b; /* brand red — primary accent */
+  --yellow: #f5c518; /* brand yellow — secondary accent */
+}
+
+/* Map tokens + fonts into Tailwind v4's theme so utilities exist
+   (bg-bg, text-text, text-muted, text-red, text-yellow, font-display, font-body). */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-red: var(--red);
+  --color-yellow: var(--yellow);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection — red signal */
+::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+/* Subtle scrollbar (WebKit) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a27;
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a36;
+}
+
+/* Firefox */
+* {
+  scrollbar-color: #2a2a27 var(--bg);
+}
+
+/* Lenis smooth-scroll baseline */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
