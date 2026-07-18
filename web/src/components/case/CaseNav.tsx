@@ -31,7 +31,7 @@ export default function CaseNav({
         <Link href={`/work/${prev.slug}/`} className="group block">
           <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-muted transition-colors duration-200 group-hover:border-red/40 group-hover:text-text">
             <span
-              className="h-1.5 w-1.5 rounded-full bg-red"
+              className="h-1.5 w-1.5 rounded-full bg-red group-hover:animate-pulse"
               aria-hidden="true"
             />
             Previous
@@ -47,7 +47,7 @@ export default function CaseNav({
         >
           <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-muted transition-colors duration-200 group-hover:border-red/40 group-hover:text-text">
             <span
-              className="h-1.5 w-1.5 rounded-full bg-red"
+              className="h-1.5 w-1.5 rounded-full bg-red group-hover:animate-pulse"
               aria-hidden="true"
             />
             Next

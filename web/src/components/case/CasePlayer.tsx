@@ -45,16 +45,22 @@ export default function CasePlayer({ film }: { film: Film }) {
                 aria-hidden="true"
                 className="absolute inset-0 bg-black/25 transition-colors duration-300 group-hover:bg-black/10"
               />
-              <span
-                aria-hidden="true"
-                className="relative flex h-16 w-16 items-center justify-center rounded-full bg-yellow text-bg shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-transform duration-300 group-hover:scale-105 md:h-20 md:w-20"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="ml-1 h-6 w-6 fill-current md:h-7 md:w-7"
+              <span className="relative flex h-16 w-16 items-center justify-center md:h-20 md:w-20">
+                <span
+                  aria-hidden="true"
+                  className="qf-pulse-ring pointer-events-none absolute inset-[-6px] rounded-full border border-yellow/60"
+                />
+                <span
+                  aria-hidden="true"
+                  className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-yellow text-bg shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-transform duration-300 group-hover:scale-105 md:h-20 md:w-20"
                 >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="ml-1 h-6 w-6 fill-current md:h-7 md:w-7"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
               </span>
             </button>
           )}

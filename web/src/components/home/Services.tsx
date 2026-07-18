@@ -1,4 +1,5 @@
 import Reveal from "@/components/shared/Reveal";
+import LineReveal from "@/components/shared/LineReveal";
 import SectionRule from "./SectionRule";
 
 /**
@@ -50,14 +51,14 @@ export default function Services() {
         />
       </Reveal>
 
-      <Reveal className="mx-auto max-w-[1600px] px-5 md:px-10">
+      <div className="mx-auto max-w-[1600px] px-5 md:px-10">
         <h2
           id="services-heading"
           className="mt-10 font-display text-[13vw] font-black uppercase leading-[0.85] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          Services
+          <LineReveal>Services</LineReveal>
         </h2>
-      </Reveal>
+      </div>
 
       <ul className="mx-auto mt-12 max-w-[1600px] px-5 md:mt-16 md:px-10">
         {SERVICES.map((s, i) => {
@@ -65,7 +66,7 @@ export default function Services() {
           return (
             <li
               key={s.num}
-              className="border-t border-white/10 py-10 last:border-b md:py-14"
+              className="group border-t border-white/10 py-10 last:border-b md:py-14"
             >
               <Reveal>
                 <div
@@ -82,7 +83,7 @@ export default function Services() {
                     alt=""
                     aria-hidden="true"
                     loading="lazy"
-                    className="h-40 w-full max-w-[280px] shrink-0 rounded-md object-cover ring-1 ring-white/10 md:h-36"
+                    className="h-40 w-full max-w-[280px] shrink-0 rounded-md object-cover ring-1 ring-white/10 transition-all duration-500 ease-out group-hover:scale-[1.03] group-hover:ring-white/30 motion-reduce:transition-none md:h-36"
                   />
                   <div
                     className={`flex-1 ${reversed ? "md:text-right" : ""}`}

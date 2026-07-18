@@ -1,4 +1,5 @@
 import Reveal from "@/components/shared/Reveal";
+import LineReveal from "@/components/shared/LineReveal";
 import SectionRule from "./SectionRule";
 
 /**
@@ -25,15 +26,15 @@ export default function StatementCTA() {
       </Reveal>
 
       <div className="mx-auto max-w-[1600px] px-5 md:px-10">
-        <Reveal>
-          <h2
-            id="cta-heading"
-            className="mt-14 max-w-6xl text-balance font-display text-5xl font-black uppercase leading-[0.92] tracking-tight md:mt-20 md:text-8xl"
-          >
+        <h2
+          id="cta-heading"
+          className="mt-14 max-w-6xl text-balance font-display text-5xl font-black uppercase leading-[0.92] tracking-tight md:mt-20 md:text-8xl"
+        >
+          <LineReveal>
             <span className="text-text">Let&apos;s cut something</span>{" "}
             <span className="text-muted">worth watching.</span>
-          </h2>
-        </Reveal>
+          </LineReveal>
+        </h2>
 
         <Reveal>
           <div className="mt-12 flex flex-col items-start gap-6 sm:flex-row sm:items-center md:mt-16">

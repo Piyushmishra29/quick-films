@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TickerRuler from "./TickerRuler";
 import Wordmark from "./Wordmark";
 
 const MAILTO =
@@ -87,12 +88,7 @@ export default function Footer() {
 
         {/* Ruler */}
         <div className="mt-16 md:mt-24" aria-hidden="true">
-          <div className="qf-ticks w-full" />
-          <div className="mt-2 flex justify-between text-[10px] uppercase tracking-[0.2em] text-muted tabular-nums">
-            {TICKS.map((t) => (
-              <span key={t}>{t}</span>
-            ))}
-          </div>
+          <TickerRuler ticks={TICKS} duration={120} />
         </div>
       </div>
 

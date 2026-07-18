@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import TickerRuler from "@/components/shared/TickerRuler";
 
 /**
  * Cinematic hero — motion beat 1 (spec §Motion). A full-bleed frame from our
@@ -44,6 +46,39 @@ const SERVICES = [
 
 const TICKS = ["00:00", "00:15", "00:30", "00:45", "01:00"];
 
+// Running camera timecode (HH:MM:SS:FF at 24fps), isolated so its 24Hz
+// re-renders never touch the rest of the hero. Static under reduced motion.
+const TC_FPS = 24;
+const TC_START_FRAMES = 3 * TC_FPS + 12; // matches the static "00:00:03:12"
+
+function formatTimecode(totalFrames: number) {
+  const ff = totalFrames % TC_FPS;
+  const totalSeconds = Math.floor(totalFrames / TC_FPS);
+  const ss = totalSeconds % 60;
+  const mm = Math.floor(totalSeconds / 60) % 60;
+  const hh = Math.floor(totalSeconds / 3600) % 24;
+  return [hh, mm, ss, ff].map((n) => String(n).padStart(2, "0")).join(":");
+}
+
+function RecTimecode({ reduce }: { reduce: boolean }) {
+  const [frames, setFrames] = useState(TC_START_FRAMES);
+
+  useEffect(() => {
+    if (reduce) return;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const f = TC_START_FRAMES + Math.floor(((now - start) / 1000) * TC_FPS);
+      setFrames((prev) => (prev === f ? prev : f));
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [reduce]);
+
+  return <span className="tabular-nums">REC {formatTimecode(frames)}</span>;
+}
+
 export default function Hero() {
   const reduce = useReducedMotion();
   const mv = (v: Variants) => (reduce ? undefined : v);
@@ -58,8 +93,20 @@ export default function Hero() {
     >
       {/* Full-bleed cinematic frames from our own footage.
           Desktop (>=768px): three vertical film-strips side by side.
-          Mobile: a single tall composite. */}
-      <div className="absolute inset-0 hidden grid-cols-3 md:grid" aria-hidden="true">
+          Mobile: a single tall composite. Both drift in a very slow Ken
+          Burns (scaled up, easing vertically back and forth over ~40s) —
+          ambient texture only, skipped entirely under reduced motion. */}
+      <motion.div
+        className="absolute inset-0 hidden grid-cols-3 md:grid"
+        aria-hidden="true"
+        style={reduce ? undefined : { scale: 1.06 }}
+        animate={reduce ? undefined : { y: ["-2.5%", "2.5%"] }}
+        transition={
+          reduce
+            ? undefined
+            : { duration: 40, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }
+        }
+      >
         {[1, 2, 3].map((n) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -71,15 +118,26 @@ export default function Hero() {
             fetchPriority="high"
           />
         ))}
-      </div>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/hero-mobile.jpg"
-        srcSet="/hero-mobile.jpg 1x, /hero-mobile@2x.jpg 2x"
-        alt="A cinematic frame from Quick Films footage"
-        className="absolute inset-0 h-full w-full object-cover object-center md:hidden"
-        fetchPriority="high"
-      />
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 md:hidden"
+        style={reduce ? undefined : { scale: 1.06 }}
+        animate={reduce ? undefined : { y: ["-2.5%", "2.5%"] }}
+        transition={
+          reduce
+            ? undefined
+            : { duration: 40, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }
+        }
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero-mobile.jpg"
+          srcSet="/hero-mobile.jpg 1x, /hero-mobile@2x.jpg 2x"
+          alt="A cinematic frame from Quick Films footage"
+          className="h-full w-full object-cover object-center"
+          fetchPriority="high"
+        />
+      </motion.div>
       {/* Scrims: darken top for nav/ruler, bottom for the wordmark, and a
           global tint so the bright bokeh never fights the type. */}
       <div className="absolute inset-0 bg-black/25" aria-hidden="true" />
@@ -98,12 +156,7 @@ export default function Hero() {
         aria-hidden="true"
         className="relative z-10 mx-auto w-full max-w-[1600px] px-5 pt-24 md:px-10 md:pt-28"
       >
-        <div className="qf-ticks w-full" />
-        <div className="mt-2 flex justify-between text-[10px] uppercase tracking-[0.2em] text-muted tabular-nums">
-          {TICKS.map((t) => (
-            <span key={t}>{t}</span>
-          ))}
-        </div>
+        <TickerRuler ticks={TICKS} duration={60} />
       </motion.div>
 
       {/* Main content */}
@@ -114,7 +167,7 @@ export default function Hero() {
           className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted md:mt-8"
         >
           <span className="h-2 w-2 animate-pulse rounded-full bg-red" />
-          <span className="tabular-nums">REC 00:00:03:12</span>
+          <RecTimecode reduce={!!reduce} />
         </motion.div>
 
         {/* Services (left) + intro (right) */}

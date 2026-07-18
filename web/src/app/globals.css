@@ -206,3 +206,69 @@ html.lenis body {
     transform: none;
   }
 }
+
+/* Expanding pulse ring — REC-style breathing halo for play buttons and dots.
+   Applied to a ::after-less span layered behind the control; scales out and
+   fades on a loop. prefers-reduced-motion pins it still. */
+.qf-pulse-ring {
+  animation: qf-pulse-ring 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes qf-pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* Single REC-blink for the wordmark's tally dot on hover. */
+.qf-blink {
+  animation: qf-blink 0.9s steps(2, jump-none) infinite;
+}
+@keyframes qf-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.15;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qf-pulse-ring,
+  .qf-blink {
+    animation: none;
+  }
+}
+
+/* Wordmark tally dot — hidden by default, blinks red only while the
+   wordmark itself is hovered. Pure CSS so Wordmark stays server-compatible. */
+.qf-wordmark-dot {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.qf-wordmark:hover .qf-wordmark-dot {
+  opacity: 1;
+  animation: qf-blink 0.9s steps(2, jump-none) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .qf-wordmark:hover .qf-wordmark-dot {
+    animation: none;
+  }
+}
+
+/* Hidden-scrollbar horizontal scroll rows (mobile filmstrips, phone rows). */
+.qf-noscroll {
+  scrollbar-width: none;
+}
+.qf-noscroll::-webkit-scrollbar {
+  display: none;
+}

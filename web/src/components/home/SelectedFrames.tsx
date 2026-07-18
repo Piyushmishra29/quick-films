@@ -26,6 +26,15 @@ const ROW_B = [
   { src: "/stills/frame-saree.jpg", alt: "A woman in a saree backlit at golden hour" },
 ];
 
+// Mobile re-cut of the same pool: three swipeable rows instead of two drifting
+// ones — the 90s drift reads as frozen on a phone, and a transform-animated
+// track can't be touch-scrolled anyway.
+const MOBILE_ROWS = [
+  ROW_A.slice(0, 4),
+  [ROW_A[4], ...ROW_B.slice(0, 2)],
+  ROW_B.slice(2),
+];
+
 function Strip({
   frames,
   reversed = false,
@@ -50,7 +59,7 @@ function Strip({
             src={f.src}
             alt={i < frames.length ? f.alt : ""}
             loading="lazy"
-            className="h-full w-auto max-w-none object-cover"
+            className="h-full w-auto max-w-none object-cover transition-transform duration-500 ease-out hover:scale-[1.03] motion-reduce:transition-none"
           />
         </div>
       ))}
@@ -88,9 +97,36 @@ export default function SelectedFrames() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent md:w-32"
         />
-        <div className="space-y-3 md:space-y-4">
+        {/* Desktop: ambient drifting strips */}
+        <div className="hidden space-y-4 md:block">
           <Strip frames={ROW_A} />
           <Strip frames={ROW_B} reversed />
+        </div>
+
+        {/* Mobile: three finger-swipeable snap rows (fills more of the
+            viewport and makes every frame reachable) */}
+        <div className="space-y-3 md:hidden">
+          {MOBILE_ROWS.map((row, r) => (
+            <div
+              key={r}
+              className="qf-noscroll flex snap-x gap-3 overflow-x-auto scroll-px-5 px-5 [-webkit-overflow-scrolling:touch]"
+            >
+              {row.map((f) => (
+                <div
+                  key={f.src}
+                  className="relative h-32 shrink-0 snap-start overflow-hidden rounded-sm ring-1 ring-white/10"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={f.src}
+                    alt={f.alt}
+                    loading="lazy"
+                    className="h-full w-auto max-w-none object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 

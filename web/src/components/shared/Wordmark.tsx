@@ -16,7 +16,7 @@ export default function Wordmark({
 }) {
   const content = (
     <span
-      className={`inline-flex items-baseline gap-[0.15em] font-display leading-none ${className}`}
+      className={`qf-wordmark inline-flex items-baseline gap-[0.15em] font-display leading-none ${className}`}
       style={style}
       aria-label="Quick Films"
     >
@@ -24,6 +24,7 @@ export default function Wordmark({
       <span className="font-black uppercase tracking-tight text-text">
         FILMS
       </span>
+      <span aria-hidden="true" className="qf-wordmark-dot ml-0.5 h-1.5 w-1.5 rounded-full bg-red" />
     </span>
   );
 
