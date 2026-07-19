@@ -284,7 +284,7 @@ export default function ShortForm() {
       <Reveal>
         <SectionRule
           index="01"
-          label="Short Form"
+          label="Mini Films"
           meta="6 Reels · 9:16"
           className="mx-auto max-w-[1600px] px-5 md:px-10"
         />
@@ -296,8 +296,8 @@ export default function ShortForm() {
           id="short-form-heading"
           className="mt-10 text-center font-display text-[18vw] font-black uppercase leading-[0.82] tracking-tight"
         >
-          <span className="block text-text">Short</span>
-          <span className="block text-muted">Form</span>
+          <span className="block text-text">Mini</span>
+          <span className="block text-muted">Films</span>
         </h2>
       </Reveal>
 
@@ -310,14 +310,14 @@ export default function ShortForm() {
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         >
           <span className="absolute left-0 top-0 font-display font-black uppercase leading-[0.78] tracking-tight text-text/90 [font-size:clamp(5rem,12vw,12rem)]">
-            Short
+            Mini
           </span>
           <span className="absolute bottom-0 right-0 font-display font-black uppercase leading-[0.78] tracking-tight text-muted/70 [font-size:clamp(5rem,12vw,12rem)]">
-            Form
+            Films
           </span>
         </div>
         <h2 id="short-form-heading-desktop" className="sr-only">
-          Short Form
+          Mini Films
         </h2>
 
         {/* Phone fan */}
