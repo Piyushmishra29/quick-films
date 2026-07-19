@@ -6,6 +6,7 @@ export type Film = {
   slug: string;
   title: string;
   year: string;
+  seoTag?: string; // short service label appended to the SEO <title> (e.g. "Brand Film Edit")
   tags: string[]; // e.g. ["Documentary", "Colour Grade", "VO"]
   duration: string; // "0:60"
   description: string; // 2–3 sentence editorial copy in studio voice
@@ -38,6 +39,7 @@ export const films: Film[] = [
     slug: "soch",
     title: "Dressed for Success",
     year: "2026",
+    seoTag: "Brand Film Edit",
     tags: ["Brand Film", "Fashion", "VO"],
     duration: "0:50",
     description:
@@ -55,6 +57,7 @@ export const films: Film[] = [
     slug: "dave-busters",
     title: "Game On at Dave & Buster's",
     year: "2026",
+    seoTag: "Venue Reel Edit",
     tags: ["Short-form", "Venue", "Interview"],
     duration: "1:14",
     description:
@@ -72,6 +75,7 @@ export const films: Film[] = [
     slug: "project-grain",
     title: "Woody, Dark, Cozy",
     year: "2026",
+    seoTag: "F&B Brand Film",
     tags: ["Brand Film", "F&B", "Motion"],
     duration: "1:41",
     description:
@@ -89,6 +93,7 @@ export const films: Film[] = [
     slug: "interview",
     title: "Every Face Has a Moment",
     year: "2026",
+    seoTag: "Documentary Edit",
     tags: ["Documentary", "Interview", "Colour Grade"],
     duration: "1:00",
     description:
@@ -106,6 +111,7 @@ export const films: Film[] = [
     slug: "kathakali",
     title: "Kathakali at First Light",
     year: "2026",
+    seoTag: "Colour Grade Reel",
     tags: ["Short-form", "Culture", "Colour Grade"],
     duration: "0:18",
     description:
@@ -123,6 +129,7 @@ export const films: Film[] = [
     slug: "niko-theyyam",
     title: "Theyyam by Firelight",
     year: "2026",
+    seoTag: "Documentary Colour Grade",
     tags: ["Documentary", "VO", "Colour Grade"],
     duration: "0:27",
     description:
@@ -141,6 +148,7 @@ export const films: Film[] = [
     slug: "pe",
     title: "Flagship",
     year: "2026",
+    seoTag: "Menswear Brand Film",
     tags: ["Brand Film", "Menswear", "Motion"],
     duration: "0:49",
     description:

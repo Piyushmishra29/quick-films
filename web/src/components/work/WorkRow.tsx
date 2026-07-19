@@ -48,7 +48,7 @@ export default function WorkRow({
         >
           <Image
             src={thumb}
-            alt=""
+            alt={`${film.title} — poster frame`}
             fill
             sizes={landscape ? "176px" : "112px"}
             className="object-cover"

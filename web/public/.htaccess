@@ -2,6 +2,16 @@
 # Caching + compression for the Hostinger FTP deploy. All rules guarded so a
 # missing module never 500s the site.
 
+# --- Canonical host + errors -------------------------------------------------
+# 301 www → apex (the cert on www is valid), and serve the static 404 page.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.quickfilms\.co$ [NC]
+  RewriteRule ^(.*)$ https://quickfilms.co/$1 [R=301,L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
 # --- Compression -------------------------------------------------------------
 <IfModule mod_brotli.c>
   AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/xml \

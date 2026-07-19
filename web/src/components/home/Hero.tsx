@@ -231,6 +231,10 @@ export default function Hero() {
               Quick Films
             </motion.span>
           </span>
+          <span className="sr-only">
+            {" "}
+            — Video Editing, Colour Grade &amp; Motion Studio, Bengaluru
+          </span>
         </h1>
       </div>
     </motion.section>

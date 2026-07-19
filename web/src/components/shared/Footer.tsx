@@ -32,7 +32,8 @@ export default function Footer() {
             </p>
             <p className="max-w-sm text-lg leading-snug text-text">
               <span className="text-text">A film-grade</span> edit, colour and
-              motion studio cutting documentary and short-form work{" "}
+              motion studio in Bengaluru cutting documentary and short-form
+              work{" "}
               <span className="text-text">for people who care how it feels.</span>
             </p>
           </div>
@@ -75,7 +76,9 @@ export default function Footer() {
                 WhatsApp
               </a>
             )}
-            <p className="mt-4 text-sm text-muted">Bengaluru · Remote worldwide</p>
+            <p className="mt-4 text-sm text-muted">
+              Bengaluru, India · Remote worldwide
+            </p>
             <a
               href={MAILTO}
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-red-cta px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-red-cta-hover"
@@ -107,7 +110,7 @@ export default function Footer() {
       {/* Legal bar */}
       <div className="mx-auto mt-8 max-w-[1600px] px-5 md:px-10">
         <div className="flex flex-col gap-2 border-t border-white/5 py-6 text-[11px] uppercase tracking-[0.16em] text-muted md:flex-row md:items-center md:justify-between">
-          <p>© 2026 Quick Films — Edit · Grade · Motion</p>
+          <p>© 2026 Quick Films — Edit · Grade · Motion · Bengaluru, India</p>
           <p>All work by Quick Films</p>
         </div>
       </div>

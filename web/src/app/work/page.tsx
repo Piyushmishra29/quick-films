@@ -5,14 +5,17 @@ import LineReveal from "@/components/shared/LineReveal";
 import TickerRuler from "@/components/shared/TickerRuler";
 import SectionRule from "@/components/home/SectionRule";
 import WorkRow from "@/components/work/WorkRow";
+import { SITE_URL } from "../layout";
 
-const TITLE = "Work — Quick Films";
+const TITLE =
+  "Selected Work — Documentary & Brand Film Editing | Quick Films";
 const DESCRIPTION =
-  "Selected work from Quick Films — documentary, short-form, colour grade, and motion.";
+  "Eight edited and graded films from Quick Films, Bengaluru — documentary, brand films, short-form reels and colour grade case studies.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
+  alternates: { canonical: "/work/" },
   openGraph: {
     type: "website",
     siteName: "Quick Films",
@@ -33,9 +36,44 @@ export const metadata: Metadata = {
 // sitewide (Hero / Stats / Footer). Not tied to a specific film's runtime.
 const TICKS = ["00:00", "00:15", "00:30", "00:45", "01:00"];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: `${SITE_URL}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Work",
+          item: `${SITE_URL}/work/`,
+        },
+      ],
+    },
+    {
+      "@type": "ItemList",
+      itemListElement: films.map((film, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/work/${film.slug}/`,
+      })),
+    },
+  ],
+};
+
 export default function WorkPage() {
   return (
     <div className="mx-auto max-w-[1600px] px-5 pb-24 pt-32 md:px-10 md:pb-32 md:pt-40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="mb-16 md:mb-24">
         <Reveal as="div">
           <SectionRule

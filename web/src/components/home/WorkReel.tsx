@@ -32,7 +32,7 @@ export default function WorkReel() {
             href="/work/"
             className="hidden shrink-0 pb-2 text-sm uppercase tracking-[0.14em] text-muted transition-colors duration-200 hover:text-text sm:inline-flex"
           >
-            All work ↗
+            See all films ↗
           </Link>
         </header>
       </Reveal>
@@ -48,7 +48,7 @@ export default function WorkReel() {
           href="/work/"
           className="inline-flex text-sm uppercase tracking-[0.14em] text-muted transition-colors duration-200 hover:text-text sm:hidden"
         >
-          All work ↗
+          See all films ↗
         </Link>
       </Reveal>
     </section>

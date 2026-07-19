@@ -4,7 +4,6 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 // Static (no request-time APIs) so it emits a plain robots.txt in `out/`.
-// NOTE: domain is provisional — client has not confirmed the final URL.
 const BASE = "https://quickfilms.co";
 
 export default function robots(): MetadataRoute.Robots {

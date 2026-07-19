@@ -15,6 +15,7 @@ export default function CaseCredits({
         index={index}
         label="Credits"
         meta={`${credits.length} Roles`}
+        headingLevel="h2"
       />
       <ul className="mx-auto mt-10 max-w-2xl divide-y divide-white/5 md:mt-12">
         {credits.map((c) => (

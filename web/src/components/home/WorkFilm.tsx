@@ -162,6 +162,7 @@ export default function WorkFilm({
           <span className="sm:text-center">{film.tags.join(" · ")}</span>
           <Link
             href={`/work/${film.slug}/`}
+            aria-label={`View ${film.title} case study`}
             className="inline-flex items-center gap-1 transition-colors duration-200 hover:text-text sm:justify-self-end"
           >
             View case <span className="text-red">↗</span>

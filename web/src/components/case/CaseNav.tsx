@@ -23,7 +23,7 @@ export default function CaseNav({
 }) {
   return (
     <Reveal as="div">
-      <SectionRule index={index} label="More Films" />
+      <SectionRule index={index} label="More Films" headingLevel="h2" />
       <nav
         aria-label="More films"
         className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:mt-14"

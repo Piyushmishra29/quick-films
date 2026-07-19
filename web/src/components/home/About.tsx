@@ -54,8 +54,9 @@ export default function About() {
               />
             </div>
             <p className="max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              Quick Films is a small edit room that treats the timeline like
-              writing — documentary and short-form footage shaped into pieces
+              Quick Films is a small edit room in Bengaluru that treats the
+              timeline like writing — documentary and short-form footage
+              shaped into pieces
               that move. Edited for rhythm, graded for mood, finished with type
               and motion. No noise, no filler; just the picture, cut well.
             </p>

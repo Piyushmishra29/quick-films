@@ -5,15 +5,18 @@ import Nav from "@/components/shared/Nav";
 import Footer from "@/components/shared/Footer";
 import LenisProvider from "@/components/shared/LenisProvider";
 
-const SITE_TITLE = "Quick Films — Edit · Grade · Motion";
+export const SITE_URL = "https://quickfilms.co";
+
+const SITE_TITLE =
+  "Quick Films — Video Editing & Colour Grade Studio, Bengaluru";
 const SITE_DESCRIPTION =
-  "Quick Films is a video-editing and short-form film studio. Editing, colour grade, and motion for documentary and short-form work.";
+  "Quick Films is a video editing, colour grading and motion studio in Bengaluru, India — documentary, brand films and short-form reels, cut and graded end to end.";
 
 export const metadata: Metadata = {
-  // NOTE: domain is provisional — client has not confirmed the final URL.
-  metadataBase: new URL("https://quickfilms.co"),
+  metadataBase: new URL(SITE_URL),
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "Quick Films",

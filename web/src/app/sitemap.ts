@@ -5,7 +5,6 @@ import { films } from "@/lib/films";
 export const dynamic = "force-static";
 
 // Static (no request-time APIs) so it emits a plain sitemap.xml in `out/`.
-// NOTE: domain is provisional — client has not confirmed the final URL.
 const BASE = "https://quickfilms.co";
 
 export default function sitemap(): MetadataRoute.Sitemap {

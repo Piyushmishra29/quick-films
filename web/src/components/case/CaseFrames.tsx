@@ -18,7 +18,12 @@ export default function CaseFrames({
   return (
     <section className="mb-16 md:mb-24">
       <Reveal>
-        <SectionRule index={index} label="Frames" meta={`${stills.length} Stills`} />
+        <SectionRule
+          index={index}
+          label="Frames"
+          meta={`${stills.length} Stills`}
+          headingLevel="h2"
+        />
       </Reveal>
       <div className="mt-10 flex flex-wrap justify-center gap-6 md:mt-12 md:gap-10">
         {stills.map((src, i) => {
