@@ -21,7 +21,6 @@ const ROW_A = [
 const ROW_B = [
   { src: "/stills/frame-fiat.jpg", alt: "A woman beside a vintage blue car" },
   { src: "/stills/frame-brooch.jpg", alt: "A crystal brooch, macro detail" },
-  { src: "/stills/frame-restaurant.jpg", alt: "A portrait in low restaurant light" },
   { src: "/stills/frame-cafe.jpg", alt: "A woman on the phone in a garden cafe" },
   { src: "/stills/frame-saree.jpg", alt: "A woman in a saree backlit at golden hour" },
 ];
