@@ -52,6 +52,22 @@ const FAN: Slot[] = [
 // Mobile row: every vertical film (landscape cuts don't belong in a phone frame).
 const VERTICALS = films.filter((f) => f.aspect === "9/16");
 
+// Per-film engagement numbers for the Reels rail — varied so the cluster
+// reads like six real posts, not one mock repeated. Deterministic (keyed by
+// slug, not random) so SSR and hydration always agree.
+const REEL_STATS: Record<
+  string,
+  { likes: string; comments: string; shares: string }
+> = {
+  kathakali: { likes: "128k", comments: "1.2k", shares: "8.4k" },
+  "dave-busters": { likes: "74.2k", comments: "892", shares: "5.6k" },
+  "niko-theyyam": { likes: "56.3k", comments: "487", shares: "2.1k" },
+  "project-grain": { likes: "31.7k", comments: "356", shares: "1.8k" },
+  interview: { likes: "24.1k", comments: "214", shares: "986" },
+  pe: { likes: "18.9k", comments: "163", shares: "742" },
+};
+const REEL_STATS_FALLBACK = { likes: "12.4k", comments: "98", shares: "312" };
+
 // Small decorative Reels rail — inline so no assets/deps ship.
 function RailIcon({ d, count }: { d: React.ReactNode; count: string }) {
   return (
@@ -83,6 +99,7 @@ function Phone({ film }: { film: Film }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [active, setActive] = useState(false);
   const [canHover, setCanHover] = useState(true);
+  const stats = REEL_STATS[film.slug] ?? REEL_STATS_FALLBACK;
 
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -200,19 +217,19 @@ function Phone({ film }: { film: Film }) {
           className="absolute bottom-24 right-3 flex flex-col items-center gap-4"
         >
           <RailIcon
-            count="42.6k"
+            count={stats.likes}
             d={
               <path d="M12 20s-7-4.35-9.5-8.5C1 8.5 2.5 5.5 5.5 5.5c1.9 0 3 1 2.6 1.8C9 6 10 5.5 12 5.5s3 .5 3.9 1.8c-.4-.8.7-1.8 2.6-1.8 3 0 4.5 3 3 6C19 15.65 12 20 12 20z" />
             }
           />
           <RailIcon
-            count="318"
+            count={stats.comments}
             d={
               <path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-6.1A8.4 8.4 0 1 1 21 11.5z" />
             }
           />
           <RailIcon
-            count="1.1k"
+            count={stats.shares}
             d={<path d="M22 3 11 14M22 3l-7 18-4-8-8-4 19-6z" />}
           />
           <svg
