@@ -120,17 +120,26 @@ if [ "${DRY_RUN}" -eq 1 ]; then
   MIRROR_OPTS="${MIRROR_OPTS} --dry-run"
 fi
 
+# Purge stale lftp temp files (.in.<name>.) left by interrupted transfers —
+# they 550-block the next mirror of that file, which then strands the target
+# deleted (mirror removes the old copy before uploading). lftp's glob skips
+# dot-files, so emit an explicit rm for every large file's temp name instead.
+TEMP_CLEANUP=$(cd "${LOCAL_DIR}" && find . -type f -size +1M | sed 's|^\./||' | while IFS= read -r f; do
+  d=$(dirname "${f}")
+  b=$(basename "${f}")
+  if [ "${d}" = "." ]; then
+    printf 'rm -f "%s/.in.%s."\n' "${FTP_DIR}" "${b}"
+  else
+    printf 'rm -f "%s/%s/.in.%s."\n' "${FTP_DIR}" "${d}" "${b}"
+  fi
+done)
+
 lftp -u "${FTP_USER},${FTP_PASS}" -p "${FTP_PORT}" "${FTP_HOST}" <<EOF
 set ssl:verify-certificate no
 set ftp:ssl-allow no
 set net:max-retries 3
 set net:timeout 15
-# Purge stale lftp temp files (.in.<name>.) left by interrupted transfers —
-# they 550-block the next mirror of that file. Pattern misses are harmless.
-glob rm -f "${FTP_DIR}"/.in.*
-glob rm -f "${FTP_DIR}"/films/.in.*
-glob rm -f "${FTP_DIR}"/stills/.in.*
-glob rm -f "${FTP_DIR}"/_next/.in.*
+${TEMP_CLEANUP}
 mirror ${MIRROR_OPTS} "${LOCAL_DIR}" "${FTP_DIR}"
 bye
 EOF
