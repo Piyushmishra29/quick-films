@@ -125,6 +125,12 @@ set ssl:verify-certificate no
 set ftp:ssl-allow no
 set net:max-retries 3
 set net:timeout 15
+# Purge stale lftp temp files (.in.<name>.) left by interrupted transfers —
+# they 550-block the next mirror of that file. Pattern misses are harmless.
+glob rm -f "${FTP_DIR}"/.in.*
+glob rm -f "${FTP_DIR}"/films/.in.*
+glob rm -f "${FTP_DIR}"/stills/.in.*
+glob rm -f "${FTP_DIR}"/_next/.in.*
 mirror ${MIRROR_OPTS} "${LOCAL_DIR}" "${FTP_DIR}"
 bye
 EOF
