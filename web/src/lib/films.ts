@@ -24,7 +24,7 @@ export const films: Film[] = [
     tags: ["Showreel", "Cinematography", "Edit"],
     duration: "0:32",
     description:
-      "Thirty-two seconds of everything the studio shoots and cuts — dawn above the clouds, a sprint down the beach, vintage cars, tramcars, cricket whites, kids at a picnic, product macro, silhouettes at golden hour. Cut hard to the music and graded as one piece, this is the working reel we send when someone asks what Quick Films feels like.",
+      "Thirty-two seconds, no wasted frames: dawn breaking above the clouds, a sprint down the beach, tramcars, cricket whites, vintage steel, kids mid-laugh at a picnic. Every shot ours, cut hard to the music and graded as one piece. This is the reel we send when someone asks what Quick Films feels like — press play, you'll know before it ends.",
     credits: [
       { role: "Cinematography", name: "Quick Films" },
       { role: "Edit", name: "Quick Films" },
@@ -41,7 +41,7 @@ export const films: Film[] = [
     tags: ["Brand Film", "Fashion", "VO"],
     duration: "0:50",
     description:
-      "A brand film for SOCH about a first car nobody approved of — a powder-blue Premier Padmini — and the woman who bought it anyway. The edit moves between the car, the streets and an old family photograph while the voice-over rewrites what success looks like; the grade keeps the indigo of the dress and the blue of the body in the same cool family.",
+      "Everyone said a vintage car was a risky first buy. She bought the powder-blue Premier Padmini anyway. Made for SOCH, the film moves between the car, the streets and one creased family photograph while the voice-over quietly rewrites what success is allowed to look like. The grade holds her indigo dress and the car's blue in the same cool family — girl and machine, dressed to match.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Colour Grade", name: "Quick Films" },
@@ -58,7 +58,7 @@ export const films: Film[] = [
     tags: ["Short-form", "Venue", "Interview"],
     duration: "1:14",
     description:
-      "A vertical venue film for Dave & Buster's, built from staff interviews and the floor itself — bowling lanes, darts, racing rigs, the arcade in full neon and the sports bar's wall of screens. We cut the interviews against the games they talk about and let the venue's own light do the grading talk.",
+      "Bowling lanes, dart boards, racing rigs, a wall of sports screens and an arcade running full neon. We cut the staff's own interviews against the games they can't stop talking about, and let the venue's light do the grading — a vertical built to make you want to walk in and lose track of time.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Colour Grade", name: "Quick Films" },
@@ -75,7 +75,7 @@ export const films: Film[] = [
     tags: ["Brand Film", "F&B", "Motion"],
     duration: "1:41",
     description:
-      "A bar film shot low and warm — barrel-aged spirits on the shelf, a slow cocktail pour, salmon nigiri under the lamp, a live jazz set caught in black and white. The team talks through what the room is for while the edit settles into their words: woody, dark, cozy. Motion graphics and the booking end-card were built in-house.",
+      "Their words, not ours — and the edit takes them literally. Barrel-aged spirits catch the shelf light, a cocktail pours slow, salmon nigiri waits under a lamp, and a live jazz set slips into black and white. Shot low, cut unhurried, finished with in-house motion graphics down to the book-a-table end card. You can almost hear the room.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Motion & Titles", name: "Quick Films" },
@@ -92,7 +92,7 @@ export const films: Film[] = [
     tags: ["Documentary", "Interview", "Colour Grade"],
     duration: "1:00",
     description:
-      "A working photographer sits with the camera in his lap and talks about why he keeps returning to the field — cut as a tight one-minute interview and threaded with the faces he came to shoot. We built the edit around the cadence of his speech, set clean subtitles throughout, and graded the forest light to hold its warmth without giving up the shadows.",
+      "A working photographer, camera in his lap, explaining why he keeps going back — intercut with the faces he went to find. We built the edit around the cadence of his speech, set clean subtitles throughout, and graded the forest light to stay warm without giving up its shadows. One minute long; none of it filler.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Colour Grade", name: "Quick Films" },
@@ -109,7 +109,7 @@ export const films: Film[] = [
     tags: ["Short-form", "Culture", "Colour Grade"],
     duration: "0:18",
     description:
-      "Eighteen seconds of Kathakali caught at golden hour — full costume, deliberate hands, a photographer circling for the frame. We cut it tight to the movement and graded the reds and greens to sit richly against the backlit forest.",
+      "Full costume at golden hour: deliberate hands, painted eyes, a photographer circling for his frame. Eighteen seconds cut tight to the movement, the reds and greens graded to burn richly against the backlit forest. Blink and it's over — that's the point.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Colour Grade", name: "Quick Films" },
@@ -126,7 +126,7 @@ export const films: Film[] = [
     tags: ["Documentary", "VO", "Colour Grade"],
     duration: "0:27",
     description:
-      "A voice-over short on Theyyam, shot after dark and lit almost entirely by fire. The edit follows the narration beat for beat while the grade leans into the ember reds and gold of the ritual dress.",
+      "Shot after dark and lit almost entirely by fire. The voice-over carries the ritual beat for beat while the grade leans into ember reds and the gold of the dress. Twenty-seven seconds of Theyyam the way it's actually seen — close, hot, and hard to look away from.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Voice-over", name: "Quick Films" },
@@ -141,10 +141,10 @@ export const films: Film[] = [
     slug: "pe",
     title: "Flagship",
     year: "2026",
-    tags: ["Brand Film", "Colour Grade", "Motion"],
+    tags: ["Brand Film", "Menswear", "Motion"],
     duration: "0:49",
     description:
-      "A launch film for a retail flagship, moving from moodboards and material swatches to the finished floor. We assembled the story, built the type and titles, and graded the whole piece toward a cool, considered navy.",
+      "A launch film for the Peter England flagship store: moodboards and material swatches becoming rails, mirrors and a finished floor. We assembled the story, built the type and titles, and graded the whole piece toward a cool, considered navy — the brand's own colour, worn by the film itself.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Motion & Titles", name: "Quick Films" },
