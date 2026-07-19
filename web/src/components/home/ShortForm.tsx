@@ -41,11 +41,16 @@ type Slot = {
 };
 
 const FAN: Slot[] = [
-  { film: byId("interview"), rot: -8, ty: 36, scale: 0.82, z: "z-20", ml: "ml-0" },
-  { film: byId("niko-theyyam"), rot: -4, ty: 12, scale: 0.9, z: "z-30", ml: "-ml-8" },
+  { film: byId("interview"), rot: -11, ty: 44, scale: 0.78, z: "z-10", ml: "ml-0" },
+  { film: byId("niko-theyyam"), rot: -6, ty: 16, scale: 0.88, z: "z-20", ml: "-ml-10" },
+  { film: byId("dave-busters"), rot: -3, ty: 0, scale: 0.95, z: "z-30", ml: "-ml-8" },
   { film: HERO, rot: 0, ty: -8, scale: 1.08, z: "z-40", ml: "-ml-6", hero: true },
-  { film: byId("pe"), rot: 8, ty: 34, scale: 0.82, z: "z-20", ml: "-ml-8" },
+  { film: byId("project-grain"), rot: 4, ty: 4, scale: 0.93, z: "z-30", ml: "-ml-6" },
+  { film: byId("pe"), rot: 9, ty: 40, scale: 0.8, z: "z-10", ml: "-ml-10" },
 ];
+
+// Mobile row: every vertical film (landscape cuts don't belong in a phone frame).
+const VERTICALS = films.filter((f) => f.aspect === "9/16");
 
 // Small decorative Reels rail — inline so no assets/deps ship.
 function RailIcon({ d, count }: { d: React.ReactNode; count: string }) {
@@ -276,7 +281,7 @@ export default function ShortForm() {
         <SectionRule
           index="01"
           label="Short Form"
-          meta="4 Reels · 9:16"
+          meta="6 Reels · 9:16"
           className="mx-auto max-w-[1600px] px-5 md:px-10"
         />
       </Reveal>
@@ -348,7 +353,7 @@ export default function ShortForm() {
       {/* Snap-scroll row of upright phones — no cramming, no page overflow. */}
       <div className="mt-10 lg:hidden">
         <div className="qf-noscroll flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-5 px-5 pb-4 [-webkit-overflow-scrolling:touch]">
-          {films.map((film) => (
+          {VERTICALS.map((film) => (
             <div
               key={film.slug}
               className="w-[68vw] max-w-[300px] shrink-0 snap-center [perspective:1200px]"
@@ -358,7 +363,7 @@ export default function ShortForm() {
           ))}
         </div>
         <p className="mt-3 px-5 text-center text-[11px] uppercase tracking-[0.22em] text-muted">
-          Swipe · four cuts
+          Swipe · six cuts
         </p>
       </div>
 
@@ -366,16 +371,11 @@ export default function ShortForm() {
       <Reveal className="mx-auto mt-12 max-w-[1600px] px-5 md:mt-16 md:px-10">
         <div className="grid grid-cols-1 gap-3 border-t border-white/12 pt-5 text-[11px] uppercase tracking-[0.22em] text-muted sm:grid-cols-3 sm:items-center">
           <span>Edit · Colour · Quick Films</span>
-          <span className="sm:text-center tabular-nums">Four Cuts — 01–04</span>
+          <span className="sm:text-center tabular-nums">Six Cuts — 01–06</span>
           <span className="sm:text-right">Ratio — 9:16</span>
         </div>
       </Reveal>
 
-      {/* Hide the mobile row's scrollbar without touching globals. */}
-      <style>{`
-        .qf-noscroll { scrollbar-width: none; }
-        .qf-noscroll::-webkit-scrollbar { display: none; }
-      `}</style>
     </section>
   );
 }
