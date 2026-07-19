@@ -9,7 +9,7 @@ import StatementCTA from "@/components/home/StatementCTA";
 import { SITE_URL } from "./layout";
 
 const SITE_DESCRIPTION =
-  "Quick Films is a video editing, colour grading and motion studio in Bengaluru, India — documentary, brand films and short-form reels, cut and graded end to end.";
+  "Quick Films is a video editing and film studio in Bengaluru, India — narrative films, brand films, short-form content and digital ads, cut and graded end to end.";
 
 const jsonLd = {
   "@context": "https://schema.org",

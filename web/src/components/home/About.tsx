@@ -10,7 +10,6 @@ const CREDITS = [
   { role: "Edit", name: "Quick Films" },
   { role: "Colour", name: "Quick Films" },
   { role: "Subtitles", name: "Quick Films" },
-  { role: "Motion & Titles", name: "Quick Films" },
   { role: "Coffee", name: "Still Us" },
 ];
 

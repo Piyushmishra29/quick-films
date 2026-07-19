@@ -76,13 +76,12 @@ export const films: Film[] = [
     title: "Woody, Dark, Cozy",
     year: "2026",
     seoTag: "F&B Brand Film",
-    tags: ["Brand Film", "F&B", "Motion"],
+    tags: ["Brand Film", "F&B", "Interview"],
     duration: "1:41",
     description:
       "Their words, not ours — and the edit takes them literally. Barrel-aged spirits catch the shelf light, a cocktail pours slow, salmon nigiri waits under a lamp, and a live jazz set slips into black and white. Shot low, cut unhurried, finished with in-house motion graphics down to the book-a-table end card. You can almost hear the room.",
     credits: [
       { role: "Edit", name: "Quick Films" },
-      { role: "Motion & Titles", name: "Quick Films" },
       { role: "Colour Grade", name: "Quick Films" },
     ],
     video: "/films/project-grain.mp4",
@@ -149,13 +148,12 @@ export const films: Film[] = [
     title: "Peter England",
     year: "2026",
     seoTag: "Menswear Brand Film",
-    tags: ["Brand Film", "Menswear", "Motion"],
+    tags: ["Brand Film", "Menswear", "Retail"],
     duration: "0:49",
     description:
       "A launch film for the Peter England flagship store: moodboards and material swatches becoming rails, mirrors and a finished floor. We assembled the story, built the type and titles, and graded the whole piece toward a cool, considered navy — the brand's own colour, worn by the film itself.",
     credits: [
       { role: "Edit", name: "Quick Films" },
-      { role: "Motion & Titles", name: "Quick Films" },
       { role: "Colour Grade", name: "Quick Films" },
     ],
     video: "/films/pe.mp4",
