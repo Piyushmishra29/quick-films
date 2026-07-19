@@ -132,8 +132,8 @@ export default function Hero() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/hero-mobile.jpg"
-          srcSet="/hero-mobile.jpg 1x, /hero-mobile@2x.jpg 2x"
+          src="/hero-mobile-2.jpg"
+          srcSet="/hero-mobile-2.jpg 1x, /hero-mobile-2@2x.jpg 2x"
           alt="A helmeted rider silhouetted against a sunset sky"
           className="h-full w-full object-cover object-center"
           fetchPriority="high"
