@@ -39,10 +39,10 @@ const fade: Variants = {
 };
 
 const SERVICES = [
-  "Long-form Edits",
-  "Short-form Reels",
-  "Colour Grade",
-  "Motion & Titles",
+  "Narrative Films",
+  "Brand Films",
+  "Short-form Content",
+  "Digital Ads",
 ];
 
 const TICKS = ["00:00", "00:15", "00:30", "00:45", "01:00"];
@@ -233,7 +233,7 @@ export default function Hero() {
           </span>
           <span className="sr-only">
             {" "}
-            — Video Editing, Colour Grade &amp; Motion Studio, Bengaluru
+            — Narrative Films, Brand Films &amp; Video Editing Studio, Bengaluru
           </span>
         </h1>
       </div>

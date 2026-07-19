@@ -31,8 +31,8 @@ export default function Footer() {
               <span className="text-muted">(00)</span> — Studio
             </p>
             <p className="max-w-sm text-lg leading-snug text-text">
-              <span className="text-text">A film-grade</span> edit, colour and
-              motion studio in Bengaluru cutting documentary and short-form
+              <span className="text-text">A film-grade</span> edit and colour
+              studio in Bengaluru cutting narrative, brand and short-form
               work{" "}
               <span className="text-text">for people who care how it feels.</span>
             </p>

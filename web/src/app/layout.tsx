@@ -8,9 +8,9 @@ import LenisProvider from "@/components/shared/LenisProvider";
 export const SITE_URL = "https://quickfilms.co";
 
 const SITE_TITLE =
-  "Quick Films — Video Editing & Colour Grade Studio, Bengaluru";
+  "Quick Films — Narrative & Brand Film Studio, Bengaluru";
 const SITE_DESCRIPTION =
-  "Quick Films is a video editing, colour grading and motion studio in Bengaluru, India — documentary, brand films and short-form reels, cut and graded end to end.";
+  "Quick Films is a video editing and film studio in Bengaluru, India — narrative films, brand films, short-form content and digital ads, cut and graded end to end.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

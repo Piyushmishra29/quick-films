@@ -11,26 +11,26 @@ import SectionRule from "./SectionRule";
 const SERVICES = [
   {
     num: "01",
-    title: "Long-form Edit",
-    note: "Documentary, interview and narrative cuts built for pace and clarity — structured so every beat earns the next.",
+    title: "Narrative Films",
+    note: "The main event: documentary, interview and story-driven films built for pace and clarity — structured so every beat earns the next.",
     thumb: "/stills/svc-01-school.jpg",
   },
   {
     num: "02",
-    title: "Short-form & Reels",
+    title: "Brand Films",
+    note: "Launch films, venue films, campaign stories — cut so a brand feels like cinema, and graded to match.",
+    thumb: "/stills/svc-03-fiat.jpg",
+  },
+  {
+    num: "03",
+    title: "Short-form Content",
     note: "Vertical 9:16 edits shaped for retention — a hook in the first second, paced for completion, turned around fast.",
     thumb: "/stills/svc-02-night.jpg",
   },
   {
-    num: "03",
-    title: "Colour Grade",
-    note: "Filmic, consistent grades from raw to delivery — holding warmth in the light without giving up the shadows.",
-    thumb: "/stills/svc-03-fiat.jpg",
-  },
-  {
     num: "04",
-    title: "Motion & Titles",
-    note: "Type, titles and motion that carry the frame — considered, restrained, cut to the picture.",
+    title: "Digital Ads",
+    note: "Performance-ready cuts for feeds and pre-roll — tight, on-message, delivered in every ratio the platform asks for.",
     thumb: "/stills/svc-04-carvaan.jpg",
   },
 ];
