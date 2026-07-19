@@ -134,7 +134,7 @@ export default function Hero() {
         <img
           src="/hero-mobile.jpg"
           srcSet="/hero-mobile.jpg 1x, /hero-mobile@2x.jpg 2x"
-          alt="A cinematic frame from Quick Films footage"
+          alt="A helmeted rider silhouetted against a sunset sky"
           className="h-full w-full object-cover object-center"
           fetchPriority="high"
         />
