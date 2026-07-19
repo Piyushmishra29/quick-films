@@ -95,16 +95,13 @@ export default function Footer() {
       {/* Giant wordmark — clip the right-edge bleed so the oversized type never
           forces horizontal page scroll on narrow viewports (was ~38px over at
           390px). Left-anchored; only the far-right tail clips. */}
-      <div className="mx-auto max-w-[1600px] overflow-hidden px-5 pt-6 md:px-10">
-        <Wordmark
-          href={null}
-          className="block leading-[0.8]"
-          style={{
-            // "quickFILMS" measures ~6.25em wide; size it from the padded
-            // container so the whole word fits every viewport (no clipped "S").
-            fontSize: "clamp(2rem, calc((100vw - 2.5rem) / 6.5), 15rem)",
-          }}
-        />
+      <div
+        className="mx-auto max-w-[1600px] overflow-hidden px-5 pt-6 md:px-10"
+        style={{ containerType: "inline-size" }}
+      >
+        {/* Sized via .qf-footer-wordmark — container width (cqi) with a vw
+            fallback, so classic-scrollbar platforms don't overshoot. */}
+        <Wordmark href={null} className="qf-footer-wordmark block leading-[0.8]" />
       </div>
 
       {/* Legal bar */}

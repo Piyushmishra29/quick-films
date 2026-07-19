@@ -95,6 +95,10 @@ function Phone({ film }: { film: Film }) {
   const play = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
+    // Re-assert muted on the element itself before play() — belt-and-braces
+    // for Safari, where an unmuted programmatic play() outside a gesture
+    // would be rejected (or worse, blast audio).
+    v.muted = true;
     v.play().then(() => setActive(true)).catch(() => {});
   }, []);
 

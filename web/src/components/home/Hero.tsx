@@ -87,7 +87,7 @@ export default function Hero() {
   return (
     <motion.section
       aria-label="Quick Films"
-      className="relative flex min-h-svh w-full flex-col overflow-hidden"
+      className="qf-minh-screen relative flex w-full flex-col overflow-hidden"
       variants={mv(container)}
       initial={reduce ? undefined : "hidden"}
       animate={reduce ? undefined : "show"}
@@ -217,17 +217,16 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Giant bottom-anchored wordmark */}
-        <h1 className="font-display font-black uppercase leading-[0.8] tracking-[-0.04em] text-text">
+        {/* Giant bottom-anchored wordmark — sized via .qf-hero-wordmark
+            (container-query width, vw fallback); the h1 is the container. */}
+        <h1
+          className="font-display font-black uppercase leading-[0.8] tracking-[-0.04em] text-text"
+          style={{ containerType: "inline-size" }}
+        >
           <span className="block overflow-hidden">
             <motion.span
               variants={mv(line)}
-              className="block whitespace-nowrap"
-              style={{
-                // Wordmark measures ~7.06em wide at this weight/tracking; size it
-                // from the padded container (max 1600px) so it never clips.
-                fontSize: "clamp(2.75rem, calc((100vw - 5rem) / 7.2), 13.2rem)",
-              }}
+              className="qf-hero-wordmark block whitespace-nowrap"
             >
               Quick Films
             </motion.span>

@@ -36,6 +36,9 @@ export default function WorkFilm({
   const play = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
+    // Re-assert muted before play() — Safari rejects unmuted programmatic
+    // play() outside a user gesture if the prop reflection ever slips.
+    v.muted = true;
     v.play().then(() => setActive(true)).catch(() => {});
   }, []);
 

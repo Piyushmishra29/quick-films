@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Wordmark from "./Wordmark";
 
@@ -16,6 +17,18 @@ const MAILTO =
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Tapping the logo while already on the home page smooth-scrolls back to
+  // the top (via Lenis when active) instead of a same-route re-navigation,
+  // which would jump or do nothing.
+  const onLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setOpen(false);
+    if (pathname !== "/") return;
+    e.preventDefault();
+    if (window.__lenis) window.__lenis.scrollTo(0);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   // Give the bar a solid, blurred backdrop once the hero is scrolled past, so
   // page content never collides with the transparent nav on the way up.
@@ -35,7 +48,7 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10 md:py-6">
-        <Wordmark className="text-xl md:text-2xl" href="/" />
+        <Wordmark className="text-xl md:text-2xl" href="/" onClick={onLogoClick} />
 
         <div className="flex items-center gap-4 md:gap-10">
           <ul className="hidden items-center gap-7 text-sm text-muted sm:flex md:gap-9">
@@ -85,9 +98,12 @@ export default function Nav() {
         </div>
       </nav>
 
-      {/* Mobile dropdown panel */}
+      {/* Mobile dropdown panel — inert while collapsed so its links leave the
+          tab order and screen readers skip them (max-height alone hides only
+          visually). */}
       <div
         id="mobile-nav"
+        inert={!open || undefined}
         className={`overflow-hidden border-b border-white/5 bg-bg/95 backdrop-blur-sm transition-[max-height] duration-300 ease-out sm:hidden ${
           open ? "max-h-60" : "max-h-0"
         }`}

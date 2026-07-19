@@ -9,10 +9,12 @@ export default function Wordmark({
   className = "",
   href = "/",
   style,
+  onClick,
 }: {
   className?: string;
   href?: string | null;
   style?: React.CSSProperties;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
   const content = (
     <span
@@ -31,7 +33,12 @@ export default function Wordmark({
   if (href === null) return content;
 
   return (
-    <Link href={href} className="inline-block" aria-label="Quick Films — home">
+    <Link
+      href={href}
+      className="inline-block"
+      aria-label="Quick Films — home"
+      onClick={onClick}
+    >
       {content}
     </Link>
   );

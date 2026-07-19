@@ -272,3 +272,29 @@ html.lenis body {
 .qf-noscroll::-webkit-scrollbar {
   display: none;
 }
+
+/* Full-viewport min-height with a plain-vh fallback for engines without
+   svh units (Safari <15.4 would otherwise drop the declaration entirely). */
+.qf-minh-screen {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* Giant wordmarks sized from their actual container width (cqi) instead of
+   100vw, which overshoots by the scrollbar width on classic-scrollbar
+   platforms. The vw formula stays as fallback for engines without container
+   queries. Wrappers set container-type: inline-size inline. */
+.qf-hero-wordmark {
+  font-size: clamp(2.75rem, calc((100vw - 5rem) / 7.2), 13.2rem);
+}
+.qf-footer-wordmark {
+  font-size: clamp(2rem, calc((100vw - 2.5rem) / 6.5), 15rem);
+}
+@supports (font-size: 1cqi) {
+  .qf-hero-wordmark {
+    font-size: clamp(2.75rem, calc(100cqi / 7.2), 13.2rem);
+  }
+  .qf-footer-wordmark {
+    font-size: clamp(2rem, calc(100cqi / 6.6), 15rem);
+  }
+}
