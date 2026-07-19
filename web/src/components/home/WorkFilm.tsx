@@ -8,8 +8,8 @@ import SectionRule from "./SectionRule";
 
 /**
  * A single work row, styled after the reference's per-project block:
- *   ruler label  →  framed media (our 9:16 film)  →  repeating title marquee
- *   →  three-column meta row.
+ *   ruler label  →  framed media (9:16 phone frame or 16:9 program monitor)
+ *   →  repeating title marquee  →  three-column meta row.
  * Hover plays the muted film over the poster (motion beat 3); the media is the
  * link through to the case page. Touch devices get an explicit play toggle.
  */
@@ -23,6 +23,7 @@ export default function WorkFilm({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [active, setActive] = useState(false);
   const [canHover, setCanHover] = useState(true);
+  const landscape = film.aspect === "16/9";
 
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -75,11 +76,17 @@ export default function WorkFilm({
         <Link
           href={`/work/${film.slug}/`}
           prefetch={false}
-          className="group qf-frame block w-[min(78vw,340px)] focus:outline-none"
+          className={`group qf-frame block focus:outline-none ${
+            landscape ? "w-[min(90vw,720px)]" : "w-[min(78vw,340px)]"
+          }`}
           onMouseEnter={canHover ? play : undefined}
           onMouseLeave={canHover ? stop : undefined}
         >
-          <div className="relative aspect-[9/16] overflow-hidden bg-surface ring-1 ring-white/8 transition duration-500 group-hover:ring-white/15 group-focus-visible:ring-red">
+          <div
+            className={`relative overflow-hidden bg-surface ring-1 ring-white/8 transition duration-500 group-hover:ring-white/15 group-focus-visible:ring-red ${
+              landscape ? "aspect-video" : "aspect-[9/16]"
+            }`}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={film.poster}

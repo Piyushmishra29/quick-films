@@ -51,7 +51,7 @@ export default function WorkPage() {
 
         <Reveal as="div" delay={0.1}>
           <p className="mt-6 max-w-md text-muted">
-            Four films, edited and graded end to end at Quick Films —
+            Eight films, edited and graded end to end at Quick Films —
             documentary, short-form, colour, and motion.
           </p>
 

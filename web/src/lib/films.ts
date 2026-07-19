@@ -12,11 +12,79 @@ export type Film = {
   credits: { role: string; name: string }[]; // "Edit & Grade — Quick Films" etc.
   video: string; // "/films/<slug>.mp4"
   poster: string; // "/films/<slug>.jpg"
-  aspect: "9/16";
+  aspect: "9/16" | "16/9";
   stills?: string[]; // optional frame grabs shown as a "FRAMES" strip on the case page
 };
 
 export const films: Film[] = [
+  {
+    slug: "reel",
+    title: "QF Reel — Vol. 1",
+    year: "2026",
+    tags: ["Showreel", "Cinematography", "Edit"],
+    duration: "0:32",
+    description:
+      "Thirty-two seconds of everything the studio shoots and cuts — dawn above the clouds, a sprint down the beach, vintage cars, tramcars, cricket whites, kids at a picnic, product macro, silhouettes at golden hour. Cut hard to the music and graded as one piece, this is the working reel we send when someone asks what Quick Films feels like.",
+    credits: [
+      { role: "Cinematography", name: "Quick Films" },
+      { role: "Edit", name: "Quick Films" },
+      { role: "Colour Grade", name: "Quick Films" },
+    ],
+    video: "/films/reel.mp4",
+    poster: "/films/reel.jpg",
+    aspect: "16/9",
+  },
+  {
+    slug: "soch",
+    title: "Dressed for Success",
+    year: "2026",
+    tags: ["Brand Film", "Fashion", "VO"],
+    duration: "0:50",
+    description:
+      "A brand film for SOCH about a first car nobody approved of — a powder-blue Premier Padmini — and the woman who bought it anyway. The edit moves between the car, the streets and an old family photograph while the voice-over rewrites what success looks like; the grade keeps the indigo of the dress and the blue of the body in the same cool family.",
+    credits: [
+      { role: "Edit", name: "Quick Films" },
+      { role: "Colour Grade", name: "Quick Films" },
+      { role: "Subtitles", name: "Quick Films" },
+    ],
+    video: "/films/soch.mp4",
+    poster: "/films/soch.jpg",
+    aspect: "16/9",
+  },
+  {
+    slug: "dave-busters",
+    title: "Game On at Dave & Buster's",
+    year: "2026",
+    tags: ["Short-form", "Venue", "Interview"],
+    duration: "1:14",
+    description:
+      "A vertical venue film for Dave & Buster's, built from staff interviews and the floor itself — bowling lanes, darts, racing rigs, the arcade in full neon and the sports bar's wall of screens. We cut the interviews against the games they talk about and let the venue's own light do the grading talk.",
+    credits: [
+      { role: "Edit", name: "Quick Films" },
+      { role: "Colour Grade", name: "Quick Films" },
+      { role: "Subtitles", name: "Quick Films" },
+    ],
+    video: "/films/dave-busters.mp4",
+    poster: "/films/dave-busters.jpg",
+    aspect: "9/16",
+  },
+  {
+    slug: "project-grain",
+    title: "Woody, Dark, Cozy",
+    year: "2026",
+    tags: ["Brand Film", "F&B", "Motion"],
+    duration: "1:41",
+    description:
+      "A bar film shot low and warm — barrel-aged spirits on the shelf, a slow cocktail pour, salmon nigiri under the lamp, a live jazz set caught in black and white. The team talks through what the room is for while the edit settles into their words: woody, dark, cozy. Motion graphics and the booking end-card were built in-house.",
+    credits: [
+      { role: "Edit", name: "Quick Films" },
+      { role: "Motion & Titles", name: "Quick Films" },
+      { role: "Colour Grade", name: "Quick Films" },
+    ],
+    video: "/films/project-grain.mp4",
+    poster: "/films/project-grain.jpg",
+    aspect: "9/16",
+  },
   {
     slug: "interview",
     title: "Every Face Has a Moment",

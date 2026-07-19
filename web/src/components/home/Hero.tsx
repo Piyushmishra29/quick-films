@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import TickerRuler from "@/components/shared/TickerRuler";
 
@@ -164,10 +165,22 @@ export default function Hero() {
         {/* REC chip */}
         <motion.div
           variants={mv(fade)}
-          className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted md:mt-8"
+          className="mt-6 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] text-muted md:mt-8"
         >
-          <span className="h-2 w-2 animate-pulse rounded-full bg-red" />
-          <RecTimecode reduce={!!reduce} />
+          <span className="flex items-center gap-2">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-red" />
+            <RecTimecode reduce={!!reduce} />
+          </span>
+          <Link
+            href="/work/reel/"
+            className="group inline-flex items-center gap-2 transition-colors duration-200 hover:text-text"
+          >
+            <span
+              aria-hidden="true"
+              className="h-0 w-0 border-y-[4px] border-l-[6px] border-y-transparent border-l-yellow"
+            />
+            Play reel
+          </Link>
         </motion.div>
 
         {/* Services (left) + intro (right) */}

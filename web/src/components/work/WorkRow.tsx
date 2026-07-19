@@ -22,8 +22,9 @@ export default function WorkRow({
 }) {
   const indexStr = String(index + 1).padStart(2, "0");
   // Small ~300px crop for the tiny poster boxes (mobile card + desktop hover
-  // thumb) — the full poster is oversized for these ≤220px slots.
+  // thumb) — the full poster is oversized for these ≤360px slots.
   const thumb = film.poster.replace(/\.jpg$/, "-thumb.jpg");
+  const landscape = film.aspect === "16/9";
 
   return (
     <Link
@@ -35,13 +36,21 @@ export default function WorkRow({
           reveals as a floating thumbnail on hover. qf-frame sits on the
           outer box so its corner brackets (inset -8px) aren't clipped by
           the inner overflow-hidden. */}
-      <div className="qf-frame w-24 shrink-0 sm:w-28 md:hidden">
-        <div className="relative aspect-[9/16] overflow-hidden bg-surface">
+      <div
+        className={`qf-frame shrink-0 md:hidden ${
+          landscape ? "w-36 sm:w-44" : "w-24 sm:w-28"
+        }`}
+      >
+        <div
+          className={`relative overflow-hidden bg-surface ${
+            landscape ? "aspect-video" : "aspect-[9/16]"
+          }`}
+        >
           <Image
             src={thumb}
             alt=""
             fill
-            sizes="112px"
+            sizes={landscape ? "176px" : "112px"}
             className="object-cover"
           />
         </div>
@@ -75,14 +84,20 @@ export default function WorkRow({
           doesn't affect row layout/height. */}
       <div
         aria-hidden
-        className="qf-frame pointer-events-none absolute right-14 top-1/2 z-20 hidden w-[220px] -translate-y-1/2 scale-95 opacity-0 shadow-2xl shadow-black/70 transition-all duration-500 ease-out motion-reduce:transition-none md:block md:group-hover:scale-100 md:group-hover:opacity-100"
+        className={`qf-frame pointer-events-none absolute right-14 top-1/2 z-20 hidden -translate-y-1/2 scale-95 opacity-0 shadow-2xl shadow-black/70 transition-all duration-500 ease-out motion-reduce:transition-none md:block md:group-hover:scale-100 md:group-hover:opacity-100 ${
+          landscape ? "w-[360px]" : "w-[220px]"
+        }`}
       >
-        <div className="relative aspect-[9/16] overflow-hidden bg-surface">
+        <div
+          className={`relative overflow-hidden bg-surface ${
+            landscape ? "aspect-video" : "aspect-[9/16]"
+          }`}
+        >
           <Image
             src={thumb}
             alt=""
             fill
-            sizes="220px"
+            sizes={landscape ? "360px" : "220px"}
             className="object-cover"
           />
         </div>

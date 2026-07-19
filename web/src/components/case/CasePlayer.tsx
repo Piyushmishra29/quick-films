@@ -6,14 +6,17 @@ import Reveal from "@/components/shared/Reveal";
 import type { Film } from "@/lib/films";
 
 /**
- * Centered 9:16 case player, framed with the sitewide `.qf-frame`
- * viewfinder brackets. Shows poster + play button; on click the native
+ * Centered case player, framed with the sitewide `.qf-frame` viewfinder
+ * brackets. Portrait films (9:16) render a narrow phone-frame player;
+ * landscape films (16:9) render a wide program-monitor player that fills
+ * the content column. Shows poster + play button; on click the native
  * <video> controls take over and playback starts — it never autoplays
  * (with or without sound). Static-export safe: no dynamic APIs.
  */
 export default function CasePlayer({ film }: { film: Film }) {
   const [started, setStarted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const landscape = film.aspect === "16/9";
 
   // Call play() synchronously inside the click handler (same call stack as
   // the user gesture) so browsers — including Safari — allow audio.
@@ -24,8 +27,16 @@ export default function CasePlayer({ film }: { film: Film }) {
 
   return (
     <Reveal className="mb-16 md:mb-24">
-      <div className="qf-frame mx-auto w-full max-w-[380px] md:max-w-[420px]">
-        <div className="relative aspect-[9/16] w-full overflow-hidden bg-surface ring-1 ring-white/8">
+      <div
+        className={`qf-frame mx-auto w-full ${
+          landscape ? "max-w-4xl" : "max-w-[380px] md:max-w-[420px]"
+        }`}
+      >
+        <div
+          className={`relative w-full overflow-hidden bg-surface ring-1 ring-white/8 ${
+            landscape ? "aspect-video" : "aspect-[9/16]"
+          }`}
+        >
           {!started && (
             <button
               type="button"
@@ -37,7 +48,11 @@ export default function CasePlayer({ film }: { film: Film }) {
                 src={film.poster}
                 alt=""
                 fill
-                sizes="(max-width: 768px) 90vw, 420px"
+                sizes={
+                  landscape
+                    ? "(max-width: 896px) 92vw, 896px"
+                    : "(max-width: 768px) 90vw, 420px"
+                }
                 className="object-cover"
                 priority
               />
@@ -79,7 +94,11 @@ export default function CasePlayer({ film }: { film: Film }) {
             Your browser does not support embedded video.
           </video>
         </div>
-        <p className="mx-auto mt-3 max-w-[380px] text-center text-[11px] uppercase tracking-[0.22em] text-muted md:max-w-[420px]">
+        <p
+          className={`mx-auto mt-3 text-center text-[11px] uppercase tracking-[0.22em] text-muted ${
+            landscape ? "max-w-4xl" : "max-w-[380px] md:max-w-[420px]"
+          }`}
+        >
           Captions not yet available for this film.
         </p>
       </div>
