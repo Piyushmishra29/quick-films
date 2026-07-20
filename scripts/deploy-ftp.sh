@@ -140,7 +140,13 @@ set ftp:ssl-allow no
 set net:max-retries 3
 set net:timeout 15
 ${TEMP_CLEANUP}
-mirror ${MIRROR_OPTS} "${LOCAL_DIR}" "${FTP_DIR}"
+# Two passes: site files by mtime as usual, but films/ compared by SIZE ONLY
+# (--ignore-time). The server can't preserve mtimes (no MFMT), so mtime
+# comparison re-uploads every large mp4 on every deploy — and interrupted
+# 10-20MB transfers are what strand files deleted. A video edit always
+# changes the byte size, so size-only is safe for media.
+mirror ${MIRROR_OPTS} --exclude-glob films/* "${LOCAL_DIR}" "${FTP_DIR}"
+mirror ${MIRROR_OPTS} --ignore-time "${LOCAL_DIR}/films" "${FTP_DIR}/films"
 bye
 EOF
 
