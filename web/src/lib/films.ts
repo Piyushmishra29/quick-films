@@ -2,6 +2,17 @@
 // Copy below is FINAL — written from actual frame-grabs of the footage.
 // Every film is credited to Quick Films. Keep the exported Film type STABLE.
 
+// A single graded clip inside a clip-gallery film (see the Postcards page).
+export type Clip = {
+  id: string;
+  title: string;
+  location: string; // postmark text, e.g. "OOTY"
+  note: string; // one-line caption in studio voice
+  duration: string; // "0:06"
+  video: string;
+  poster: string;
+};
+
 export type Film = {
   slug: string;
   title: string;
@@ -15,6 +26,7 @@ export type Film = {
   poster: string; // "/films/<slug>.jpg"
   aspect: "9/16" | "16/9";
   stills?: string[]; // optional frame grabs shown as a "FRAMES" strip on the case page
+  clips?: Clip[]; // when present, the case page renders a postcard clip gallery
 };
 
 export const films: Film[] = [
@@ -105,6 +117,62 @@ export const films: Film[] = [
     video: "/films/postcards.mp4",
     poster: "/films/postcards.jpg",
     aspect: "16/9",
+    clips: [
+      {
+        id: "drone",
+        title: "Tea Country",
+        location: "OOTY",
+        note: "A drone drifts through morning mist over tea slopes and greenhouse roofs.",
+        duration: "0:06",
+        video: "/films/pc-drone.mp4",
+        poster: "/films/pc-drone.jpg",
+      },
+      {
+        id: "yezdi",
+        title: "The Yezdi",
+        location: "COAST",
+        note: "Kicked to life on a fog-soaked beach road, palms fading behind.",
+        duration: "0:03",
+        video: "/films/pc-yezdi.mp4",
+        poster: "/films/pc-yezdi.jpg",
+      },
+      {
+        id: "bike",
+        title: "Headlight",
+        location: "COAST",
+        note: "One warm beam through blue rain-mist on an empty wet road.",
+        duration: "0:03",
+        video: "/films/pc-bike.mp4",
+        poster: "/films/pc-bike.jpg",
+      },
+      {
+        id: "surabhi",
+        title: "Surabhi",
+        location: "OOTY",
+        note: "A twirl under the old trees, kept in black and white.",
+        duration: "0:08",
+        video: "/films/pc-surabhi.mp4",
+        poster: "/films/pc-surabhi.jpg",
+      },
+      {
+        id: "kolkata",
+        title: "Crossing",
+        location: "KOLKATA",
+        note: "A painted bus, yellow taxis, and a look back mid-street.",
+        duration: "0:04",
+        video: "/films/pc-kolkata.mp4",
+        poster: "/films/pc-kolkata.jpg",
+      },
+      {
+        id: "sunset",
+        title: "Last Light",
+        location: "NILGIRIS",
+        note: "The long walk toward a pink mountain sky.",
+        duration: "0:17",
+        video: "/films/pc-sunset.mp4",
+        poster: "/films/pc-sunset.jpg",
+      },
+    ],
   },
   {
     slug: "interview",

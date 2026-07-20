@@ -5,6 +5,7 @@ import CaseHeader from "@/components/case/CaseHeader";
 import CasePlayer from "@/components/case/CasePlayer";
 import CaseDescription from "@/components/case/CaseDescription";
 import CaseFrames from "@/components/case/CaseFrames";
+import PostcardsGallery from "@/components/case/PostcardsGallery";
 import CaseCredits from "@/components/case/CaseCredits";
 import CaseNav from "@/components/case/CaseNav";
 import { SITE_URL } from "../../layout";
@@ -104,10 +105,15 @@ export default async function CasePage({
   const prev = films[(index - 1 + films.length) % films.length];
   const next = films[(index + 1) % films.length];
 
-  // Section numbering shifts by one when the film carries a FRAMES strip.
+  // Section numbering shifts as optional sections (FRAMES strip, and the
+  // POSTCARDS clip gallery) are inserted between the edit copy and credits.
   const hasFrames = !!film.stills && film.stills.length > 0;
-  const creditsIndex = hasFrames ? "04" : "03";
-  const navIndex = hasFrames ? "05" : "04";
+  const hasClips = !!film.clips && film.clips.length > 0;
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const clipsIndex = hasFrames ? "04" : "03";
+  const extra = (hasFrames ? 1 : 0) + (hasClips ? 1 : 0);
+  const creditsIndex = pad(3 + extra);
+  const navIndex = pad(4 + extra);
 
   return (
     <article className="mx-auto max-w-[1600px] px-5 pb-24 pt-32 md:px-10 md:pb-32">
@@ -119,6 +125,7 @@ export default async function CasePage({
       <CasePlayer film={film} />
       <CaseDescription description={film.description} />
       {hasFrames && <CaseFrames stills={film.stills!} index="03" />}
+      {hasClips && <PostcardsGallery clips={film.clips!} index={clipsIndex} />}
       <CaseCredits credits={film.credits} index={creditsIndex} />
       <CaseNav prev={prev} next={next} index={navIndex} />
     </article>

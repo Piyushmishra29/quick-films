@@ -280,6 +280,69 @@ html.lenis body {
   min-height: 100svh;
 }
 
+/* ---------------------------------------------------------------------------
+   Postcards gallery — a colourist's postcard wall (clip-gallery films only).
+   Each clip is a printed postcard: warm-paper mat, graded media, ink caption
+   and a rubber-stamp postmark. Cards sit at a slight tilt and straighten on
+   hover/focus; the tilt is halved on mobile and pinned flat under
+   prefers-reduced-motion. Entrance fade/rise is handled by framer-motion.
+--------------------------------------------------------------------------- */
+.qf-postcard {
+  /* Warm printed-paper stock with a faint tooth so the mat doesn't read flat. */
+  background-color: #efece3;
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px),
+    linear-gradient(180deg, #f3f0e8 0%, #e9e5da 100%);
+  background-size: 4px 4px, 100% 100%;
+  color: #201e19;
+  transform: rotate(var(--rot-m, 0deg));
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.55s ease;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.35),
+    0 26px 55px -22px rgba(0, 0, 0, 0.85);
+}
+@media (min-width: 768px) {
+  .qf-postcard {
+    transform: rotate(var(--rot-d, 0deg));
+  }
+}
+.qf-postcard:hover,
+.qf-postcard:focus-within {
+  transform: rotate(0deg) translateY(-8px) scale(1.015);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    0 40px 80px -24px rgba(0, 0, 0, 0.95);
+}
+@media (prefers-reduced-motion: reduce) {
+  .qf-postcard {
+    transform: none !important;
+    transition: box-shadow 0.3s ease;
+  }
+}
+
+/* Rubber-stamp postmark straddling a card corner. Ink text stays legible; the
+   brand accent (red or yellow, set inline via --accent) rings it and strikes
+   the three cancellation bars. */
+.qf-postmark {
+  --accent: var(--red);
+  color: #201e19;
+  background: radial-gradient(circle at 50% 45%, #f6f3ec 0%, #ebe7dc 100%);
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
+}
+.qf-postmark::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 999px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.qf-postmark-bar {
+  background: var(--accent);
+}
+
 /* Giant wordmarks sized from their actual container width (cqi) instead of
    100vw, which overshoots by the scrollbar width on classic-scrollbar
    platforms. The vw formula stays as fallback for engines without container
