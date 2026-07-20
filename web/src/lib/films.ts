@@ -89,6 +89,24 @@ export const films: Film[] = [
     aspect: "9/16",
   },
   {
+    slug: "postcards",
+    title: "Postcards",
+    year: "2026",
+    tags: ["Travel Film", "Colour Grade", "Montage"],
+    seoTag: "Travel Colour Reel",
+    duration: "0:40",
+    description:
+      "Six graded postcards from the road, cut into one breath: a drone drifting over misty Ooty tea country, a yellow Yezdi kicked to life among fog-soaked palms, a headlight burning through blue rain, Surabhi dancing in black and white, a Kolkata street mid-crossing, and a last walk into a pink Nilgiri sunset. Every frame graded to feel like the place did.",
+    credits: [
+      { role: "Cinematography", name: "Quick Films" },
+      { role: "Edit", name: "Quick Films" },
+      { role: "Colour Grade", name: "Quick Films" },
+    ],
+    video: "/films/postcards.mp4",
+    poster: "/films/postcards.jpg",
+    aspect: "16/9",
+  },
+  {
     slug: "interview",
     title: "Every Face Has a Moment",
     year: "2026",
