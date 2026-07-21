@@ -192,6 +192,7 @@ export const films: Film[] = [
     ],
     video: "/films/interview.mp4",
     poster: "/films/interview.jpg",
+    clientLogo: { src: "/logos/niko-works.png", alt: "Niko Works" },
     aspect: "9/16",
   },
   {
@@ -209,6 +210,7 @@ export const films: Film[] = [
     ],
     video: "/films/kathakali.mp4",
     poster: "/films/kathakali.jpg",
+    clientLogo: { src: "/logos/niko-works.png", alt: "Niko Works" },
     aspect: "9/16",
     stills: ["/stills/kathakali-still-1.jpg", "/stills/kathakali-still-2.jpg"],
   },
