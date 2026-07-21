@@ -65,8 +65,10 @@ work, a client-logo row, richer About imagery.
       films" under BOTH the Project Grain and D&B videos, one credit block for both) →
       same credits applied: District by Zomato / Pranay (freelance DoP) / Denzong Films;
       "in-house" claim removed from description.
-- [ ] **Client logos incoming** ("I'll send their logos") — Drizzl, Niko Works, Eshwari
-      Canteen. NIKO logos already in the zip. Plan a client-logo strip when the rest land.
+- [x] **Client logo strip live** in the stats band: Drizzl (zip's "Only Logo.png" inverted
+      to white), Niko Works (white variant), Eshwari Canteen — ⚠️ TEMPORARY typeset
+      wordmark in the site font (no public logo found; swap in the real one when Pranay
+      sends it, file: web/public/logos/eshwari-canteen.png).
 - [ ] Google Drive folder link received (source of the zip). "Mention this mama.. as most
       of the work has been prod…" (truncated) — likely the disclaimer we already placed;
       confirm wording covers it.

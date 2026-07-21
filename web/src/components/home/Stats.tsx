@@ -18,7 +18,13 @@ const STATS = [
   { num: "05", value: "24H", label: "Reply time" },
 ];
 
-const CLIENTS = ["Drizzl", "Niko Works", "Eshwari Canteen"];
+// White marks on transparent, heights tuned per logo shape (Niko is a
+// portrait stamp, the others are wide wordmarks).
+const CLIENTS = [
+  { name: "Drizzl", logo: "/logos/drizzl.png", h: "h-7" },
+  { name: "Niko Works", logo: "/logos/niko-works.png", h: "h-14" },
+  { name: "Eshwari Canteen", logo: "/logos/eshwari-canteen.png", h: "h-9" },
+];
 
 const container: Variants = {
   hidden: {},
@@ -107,12 +113,22 @@ export default function Stats() {
         ))}
       </motion.dl>
 
-      {/* Client roster — quiet single line under the figures */}
-      <p className="mt-12 border-t border-white/10 pt-5 text-[11px] uppercase tracking-[0.22em] text-muted md:mt-14">
-        <span className="text-text">Clients</span>
-        {" — "}
-        {CLIENTS.join(" · ")}
-      </p>
+      {/* Client roster — white marks under the figures */}
+      <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-6 border-t border-white/10 pt-6 md:mt-14 md:gap-x-14">
+        <span className="text-[11px] uppercase tracking-[0.22em] text-text">
+          Clients
+        </span>
+        {CLIENTS.map((c) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={c.name}
+            src={c.logo}
+            alt={c.name}
+            loading="lazy"
+            className={`${c.h} w-auto opacity-80 transition-opacity duration-300 hover:opacity-100`}
+          />
+        ))}
+      </div>
     </section>
   );
 }
