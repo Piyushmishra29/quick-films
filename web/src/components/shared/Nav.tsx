@@ -7,9 +7,8 @@ import Wordmark from "./Wordmark";
 
 const LINKS = [
   { label: "Work", href: "/work/", num: "01" },
-  { label: "Postcards", href: "/work/postcards/", num: "02" },
-  { label: "About", href: "/#about", num: "03" },
-  { label: "Contact", href: "/#contact", num: "04" },
+  { label: "About", href: "/#about", num: "02" },
+  { label: "Contact", href: "/#contact", num: "03" },
 ];
 
 const MAILTO =
