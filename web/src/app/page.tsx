@@ -22,6 +22,10 @@ const jsonLd = {
       description: SITE_DESCRIPTION,
       logo: `${SITE_URL}/hero-desktop.jpg`,
       areaServed: "IN",
+      founders: [
+        { "@type": "Person", name: "Pranay" },
+        { "@type": "Person", name: "Hema" },
+      ],
       address: {
         "@type": "PostalAddress",
         addressLocality: "Bengaluru",

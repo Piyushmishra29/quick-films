@@ -12,10 +12,13 @@ import { animate, motion, useInView, useReducedMotion, type Variants } from "fra
  */
 const STATS = [
   { num: "01", value: "48H", label: "First-cut turnaround" },
-  { num: "02", value: "04", label: "Delivery formats" },
-  { num: "03", value: "100%", label: "One editor throughout" },
-  { num: "04", value: "24H", label: "Reply time" },
+  { num: "02", value: "04", label: "Projects completed" },
+  { num: "03", value: "04", label: "Delivery formats" },
+  { num: "04", value: "100%", label: "One editor throughout" },
+  { num: "05", value: "24H", label: "Reply time" },
 ];
+
+const CLIENTS = ["Drizzl", "Niko Works", "Eshwari Canteen"];
 
 const container: Variants = {
   hidden: {},
@@ -82,7 +85,7 @@ export default function Stats() {
     >
       <div ref={ref} className="qf-ticks mb-10 w-full md:mb-12" />
       <motion.dl
-        className="grid grid-cols-2 gap-y-12 md:grid-cols-4"
+        className="grid grid-cols-2 gap-y-12 md:grid-cols-5"
         initial={reduce ? undefined : "hidden"}
         animate={reduce ? undefined : inView ? "show" : "hidden"}
         variants={reduce ? undefined : container}
@@ -103,6 +106,13 @@ export default function Stats() {
           </motion.div>
         ))}
       </motion.dl>
+
+      {/* Client roster — quiet single line under the figures */}
+      <p className="mt-12 border-t border-white/10 pt-5 text-[11px] uppercase tracking-[0.22em] text-muted md:mt-14">
+        <span className="text-text">Clients</span>
+        {" — "}
+        {CLIENTS.join(" · ")}
+      </p>
     </section>
   );
 }

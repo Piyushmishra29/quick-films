@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { bdoGrotesk, inter } from "./fonts";
 import Nav from "@/components/shared/Nav";
+import ScrollProgress from "@/components/shared/ScrollProgress";
 import Footer from "@/components/shared/Footer";
 import LenisProvider from "@/components/shared/LenisProvider";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <LenisProvider>
+          <ScrollProgress />
           <Nav />
           <main id="main" className="flex-1">
             {children}

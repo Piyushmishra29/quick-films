@@ -7,6 +7,8 @@ import SectionRule from "./SectionRule";
  * short paragraph. Anchored #about (nav target). Entrances use Reveal (beat 2).
  */
 const CREDITS = [
+  { role: "Founder", name: "Pranay" },
+  { role: "Co-founder", name: "Hema" },
   { role: "Edit", name: "Quick Films" },
   { role: "Colour", name: "Quick Films" },
   { role: "Subtitles", name: "Quick Films" },

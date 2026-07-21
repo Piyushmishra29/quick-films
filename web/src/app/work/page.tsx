@@ -92,6 +92,12 @@ export default function WorkPage() {
             Nine films, edited and graded end to end at Quick Films —
             documentary, short-form, colour, and motion.
           </p>
+          <p className="mt-4 max-w-xl text-[11px] uppercase leading-relaxed tracking-[0.16em] text-muted">
+            The portfolio below showcases a combination of projects produced by
+            Quick Films and selected freelance cinematography work by our
+            founder. Individual project credits indicate the role and
+            production company where applicable.
+          </p>
 
           <div className="mt-10 md:mt-14" aria-hidden="true">
             <TickerRuler ticks={TICKS} duration={60} />
