@@ -11,17 +11,22 @@ import SectionRule from "./SectionRule";
  */
 
 const ROW_A = [
-  { src: "/stills/frame-pool.jpg", alt: "Rippling pool water" },
+  { src: "/stills/frame-taxi.jpg", alt: "A woman with a film camera beside a yellow Ambassador taxi" },
   { src: "/stills/frame-court.jpg", alt: "A running track at sunset" },
-  { src: "/stills/frame-golf.jpg", alt: "A golfer mid-swing on the course" },
+  { src: "/stills/frame-golden-read.jpg", alt: "A silhouette reading against a golden sky" },
   { src: "/stills/frame-grandmother.jpg", alt: "A grandmother at a sunlit table" },
-  { src: "/stills/frame-moon.jpg", alt: "A crescent moon in a deep blue sky" },
+  { src: "/stills/frame-schoolbus.jpg", alt: "A woman in a red saree waving at a yellow school bus" },
+  { src: "/stills/frame-golf.jpg", alt: "A golfer mid-swing on the course" },
 ];
 
 const ROW_B = [
   { src: "/stills/frame-fiat.jpg", alt: "A woman beside a vintage blue car" },
+  { src: "/stills/frame-umbrella.jpg", alt: "A man under an umbrella in a rainy market street" },
+  { src: "/stills/frame-market.jpg", alt: "A street market scene in warm morning light" },
   { src: "/stills/frame-brooch.jpg", alt: "A crystal brooch, macro detail" },
+  { src: "/stills/frame-theyyam-fire.jpg", alt: "A Theyyam performer wreathed in fire and smoke" },
   { src: "/stills/frame-cafe.jpg", alt: "A woman on the phone in a garden cafe" },
+  { src: "/stills/frame-nightstall.jpg", alt: "A boy at a lamplit night stall" },
   { src: "/stills/frame-saree.jpg", alt: "A woman in a saree backlit at golden hour" },
 ];
 
@@ -29,9 +34,9 @@ const ROW_B = [
 // ones — the 90s drift reads as frozen on a phone, and a transform-animated
 // track can't be touch-scrolled anyway.
 const MOBILE_ROWS = [
-  ROW_A.slice(0, 4),
-  [ROW_A[4], ...ROW_B.slice(0, 2)],
-  ROW_B.slice(2),
+  ROW_A.slice(0, 5),
+  [ROW_A[5], ...ROW_B.slice(0, 4)],
+  ROW_B.slice(4),
 ];
 
 function Strip({

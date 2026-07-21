@@ -27,6 +27,7 @@ export type Film = {
   aspect: "9/16" | "16/9";
   stills?: string[]; // optional frame grabs shown as a "FRAMES" strip on the case page
   clips?: Clip[]; // when present, the case page renders a postcard clip gallery
+  clientLogo?: { src: string; alt: string }; // optional client mark shown on the case header
 };
 
 export const films: Film[] = [
@@ -229,6 +230,7 @@ export const films: Film[] = [
     poster: "/films/niko-theyyam.jpg",
     aspect: "9/16",
     stills: ["/stills/niko-fire.jpg", "/stills/niko-night.jpg"],
+    clientLogo: { src: "/logos/niko-works.png", alt: "Niko Works" },
   },
   {
     slug: "pe",

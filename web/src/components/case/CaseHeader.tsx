@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "@/components/shared/Reveal";
 import LineReveal from "@/components/shared/LineReveal";
 import TickerRuler from "@/components/shared/TickerRuler";
@@ -34,9 +35,30 @@ export default function CaseHeader({ film }: { film: Film }) {
         </Link>
       </Reveal>
 
-      <h1 className="font-display text-[clamp(2.75rem,11vw,8rem)] font-black uppercase leading-[0.85] tracking-tight text-text">
-        <LineReveal>{film.title}</LineReveal>
-      </h1>
+      {film.clientLogo ? (
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between md:gap-8">
+          <Reveal
+            as="div"
+            delay={0.1}
+            className="order-1 mb-6 md:order-2 md:mb-0"
+          >
+            <Image
+              src={film.clientLogo.src}
+              alt={film.clientLogo.alt}
+              width={288}
+              height={360}
+              className="h-14 w-auto opacity-90 md:h-[clamp(56px,7vw,96px)]"
+            />
+          </Reveal>
+          <h1 className="order-2 font-display text-[clamp(2.75rem,11vw,8rem)] font-black uppercase leading-[0.85] tracking-tight text-text md:order-1">
+            <LineReveal>{film.title}</LineReveal>
+          </h1>
+        </div>
+      ) : (
+        <h1 className="font-display text-[clamp(2.75rem,11vw,8rem)] font-black uppercase leading-[0.85] tracking-tight text-text">
+          <LineReveal>{film.title}</LineReveal>
+        </h1>
+      )}
 
       <Reveal as="div" delay={0.1}>
         <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] uppercase tracking-[0.22em] text-muted md:mt-8">
