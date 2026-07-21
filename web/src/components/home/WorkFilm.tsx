@@ -158,7 +158,18 @@ export default function WorkFilm({
       {/* Meta row */}
       <Reveal className="mx-auto mt-10 max-w-[1600px] px-5 md:mt-12 md:px-10">
         <div className="grid grid-cols-1 gap-3 text-[11px] uppercase tracking-[0.2em] text-muted sm:grid-cols-3 sm:items-center">
-          <span className="text-text">{film.title}</span>
+          <span className="flex items-center gap-3 text-text">
+            {film.clientLogo && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={film.clientLogo.src}
+                alt={film.clientLogo.alt}
+                loading="lazy"
+                className="h-6 w-auto opacity-80"
+              />
+            )}
+            {film.title}
+          </span>
           <span className="sm:text-center">{film.tags.join(" · ")}</span>
           <Link
             href={`/work/${film.slug}/`}

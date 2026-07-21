@@ -61,8 +61,18 @@ export default function WorkRow({
           ({indexStr})
         </span>
 
-        <h2 className="min-w-0 flex-1 break-words font-display text-[8vw] font-black uppercase leading-[0.95] tracking-tight transition-transform duration-500 ease-out sm:text-[6vw] md:text-[4vw] md:group-hover:translate-x-3 lg:text-[3.2vw]">
-          {film.title}
+        <h2 className="flex min-w-0 flex-1 items-center gap-4 break-words font-display text-[8vw] font-black uppercase leading-[0.95] tracking-tight transition-transform duration-500 ease-out sm:text-[6vw] md:text-[4vw] md:group-hover:translate-x-3 lg:text-[3.2vw]">
+          {film.clientLogo && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={film.clientLogo.src}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="h-[0.9em] w-auto shrink-0 opacity-80"
+            />
+          )}
+          <span className="min-w-0 break-words">{film.title}</span>
         </h2>
 
         <div className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1 text-[11px] uppercase tracking-[0.22em] text-muted md:flex-col md:items-end md:gap-1.5 md:text-right">
