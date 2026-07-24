@@ -1,32 +1,47 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Reveal from "@/components/shared/Reveal";
 import SectionRule from "./SectionRule";
 
 /**
  * Selected Frames — a filmstrip texture band echoing the reference's drifting
  * imagery strips. Two full-bleed rows of graded travel clips (the "Postcards"
- * set) drift slowly in opposite directions and auto-play, muted and looping —
- * ambient motion in the same family as the title marquee (see .qf-filmstrip in
- * globals.css). Each row holds two identical copies of its clip list so a -50%
- * translate loops seamlessly; prefers-reduced-motion pins the drift still.
- * Posters paint instantly while the muted loops warm up.
+ * set) drift slowly in opposite directions and auto-play, muted and looping.
+ *
+ * Playback is driven explicitly (not via the bare `autoplay` attribute) so it
+ * survives a cold cache: the clips are `preload="none"` and only start once the
+ * band scrolls into view (IntersectionObserver), and a per-video `canplay`
+ * retry re-issues play() if the first attempt stalled while buffering — the
+ * failure mode that left some tiles frozen until a second refresh. Videos pause
+ * when the band leaves the viewport, and prefers-reduced-motion keeps them on
+ * their poster frames. Strip-sized (640×360, no audio) encodes keep it light.
  */
 
 type Clip = { src: string; poster: string; label: string };
 
 const CLIPS: Clip[] = [
-  { src: "/films/pc-drone.mp4", poster: "/films/pc-drone.jpg", label: "Tea country, Ooty — drone over misty slopes" },
-  { src: "/films/pc-yezdi.mp4", poster: "/films/pc-yezdi.jpg", label: "A Yezdi kicked to life on a fog-soaked coast road" },
-  { src: "/films/pc-bike.mp4", poster: "/films/pc-bike.jpg", label: "A headlight burning through blue rain-mist" },
-  { src: "/films/pc-surabhi.mp4", poster: "/films/pc-surabhi.jpg", label: "A twirl under the old trees, in black and white" },
-  { src: "/films/pc-kolkata.mp4", poster: "/films/pc-kolkata.jpg", label: "A Kolkata street mid-crossing" },
-  { src: "/films/pc-sunset.mp4", poster: "/films/pc-sunset.jpg", label: "The long walk into a pink Nilgiri sunset" },
+  { src: "/films/pc-drone-sm.mp4", poster: "/films/pc-drone.jpg", label: "Tea country, Ooty — drone over misty slopes" },
+  { src: "/films/pc-yezdi-sm.mp4", poster: "/films/pc-yezdi.jpg", label: "A Yezdi kicked to life on a fog-soaked coast road" },
+  { src: "/films/pc-bike-sm.mp4", poster: "/films/pc-bike.jpg", label: "A headlight burning through blue rain-mist" },
+  { src: "/films/pc-surabhi-sm.mp4", poster: "/films/pc-surabhi.jpg", label: "A twirl under the old trees, in black and white" },
+  { src: "/films/pc-kolkata-sm.mp4", poster: "/films/pc-kolkata.jpg", label: "A Kolkata street mid-crossing" },
+  { src: "/films/pc-sunset-sm.mp4", poster: "/films/pc-sunset.jpg", label: "The long walk into a pink Nilgiri sunset" },
 ];
 
 // Split across the two opposing drift rows.
 const ROW_A = [CLIPS[0], CLIPS[2], CLIPS[4]];
 const ROW_B = [CLIPS[5], CLIPS[3], CLIPS[1]];
 
-function ClipTile({ clip, decorative }: { clip: Clip; decorative?: boolean }) {
+function ClipTile({
+  clip,
+  decorative,
+  register,
+}: {
+  clip: Clip;
+  decorative?: boolean;
+  register: (el: HTMLVideoElement | null) => void;
+}) {
   return (
     <div
       className="relative aspect-video h-28 shrink-0 overflow-hidden rounded-sm ring-1 ring-white/10 sm:h-36 md:h-44"
@@ -34,20 +49,29 @@ function ClipTile({ clip, decorative }: { clip: Clip; decorative?: boolean }) {
       aria-hidden={decorative ? "true" : undefined}
     >
       <video
+        ref={register}
         src={clip.src}
         poster={clip.poster}
-        autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
+        tabIndex={-1}
         className="absolute inset-0 h-full w-full object-cover"
       />
     </div>
   );
 }
 
-function Strip({ clips, reversed = false }: { clips: Clip[]; reversed?: boolean }) {
+function Strip({
+  clips,
+  reversed = false,
+  register,
+}: {
+  clips: Clip[];
+  reversed?: boolean;
+  register: (el: HTMLVideoElement | null) => void;
+}) {
   // Two copies for a seamless -50% loop.
   const doubled = [...clips, ...clips];
   return (
@@ -55,15 +79,71 @@ function Strip({ clips, reversed = false }: { clips: Clip[]; reversed?: boolean 
       className={`qf-filmstrip ${reversed ? "qf-filmstrip--rev" : ""} gap-3 md:gap-4`}
     >
       {doubled.map((c, i) => (
-        <ClipTile key={`${c.src}-${i}`} clip={c} decorative={i >= clips.length} />
+        <ClipTile
+          key={`${c.src}-${i}`}
+          clip={c}
+          decorative={i >= clips.length}
+          register={register}
+        />
       ))}
     </div>
   );
 }
 
 export default function SelectedFrames() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videosRef = useRef<Set<HTMLVideoElement>>(new Set());
+  const inViewRef = useRef(false);
+
+  const register = (el: HTMLVideoElement | null) => {
+    if (el) videosRef.current.add(el);
+  };
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Honour reduced-motion: leave every clip on its poster frame.
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const videos = videosRef.current;
+    const play = (v: HTMLVideoElement) => {
+      v.muted = true;
+      const p = v.play();
+      if (p) p.catch(() => {});
+    };
+
+    // Load + play only while the band is on (or near) screen; pause otherwise.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inViewRef.current = entry.isIntersecting;
+        videos.forEach((v) => (entry.isIntersecting ? play(v) : v.pause()));
+      },
+      { rootMargin: "300px 0px" },
+    );
+    io.observe(section);
+
+    // Cold-load safety net: when a clip finally has enough data, (re)issue
+    // play() — this is what fixes tiles that stalled on the first attempt.
+    const onCanPlay = (e: Event) => {
+      if (inViewRef.current) play(e.currentTarget as HTMLVideoElement);
+    };
+    videos.forEach((v) => v.addEventListener("canplay", onCanPlay));
+
+    return () => {
+      io.disconnect();
+      videos.forEach((v) => v.removeEventListener("canplay", onCanPlay));
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       aria-labelledby="frames-heading"
       className="overflow-hidden py-14 md:py-28"
     >
@@ -93,8 +173,8 @@ export default function SelectedFrames() {
         />
         {/* Desktop: ambient drifting strips */}
         <div className="hidden space-y-4 md:block">
-          <Strip clips={ROW_A} />
-          <Strip clips={ROW_B} reversed />
+          <Strip clips={ROW_A} register={register} />
+          <Strip clips={ROW_B} reversed register={register} />
         </div>
 
         {/* Mobile: two finger-swipeable snap rows (the slow drift reads as
@@ -108,7 +188,7 @@ export default function SelectedFrames() {
             >
               {row.map((c) => (
                 <div key={c.src} className="shrink-0 snap-start">
-                  <ClipTile clip={c} />
+                  <ClipTile clip={c} register={register} />
                 </div>
               ))}
             </div>
