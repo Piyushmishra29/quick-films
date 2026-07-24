@@ -203,18 +203,6 @@ export default function Hero() {
               (Est. 2026 — QF Reel v1)
             </p>
           </motion.div>
-
-          <motion.div variants={mv(fade)} className="sm:text-right">
-            <p className="ml-auto max-w-md text-balance text-base leading-relaxed text-muted md:text-lg">
-              <span className="text-text">Cinematic editing</span> for documentary
-              and short-form work —{" "}
-              <span className="text-text">cut for rhythm</span> and graded so it{" "}
-              <span className="text-text">feels like film</span>.
-            </p>
-            <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-muted">
-              Editor · Colourist — Bengaluru
-            </p>
-          </motion.div>
         </div>
 
         {/* Giant bottom-anchored wordmark — sized via .qf-hero-wordmark

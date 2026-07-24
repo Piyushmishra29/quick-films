@@ -111,7 +111,7 @@ export default function Footer() {
       <div className="mx-auto mt-8 max-w-[1600px] px-5 md:px-10">
         <div className="flex flex-col gap-2 border-t border-white/5 py-6 text-[11px] uppercase tracking-[0.16em] text-muted md:flex-row md:items-center md:justify-between">
           <p>© 2026 Quick Films — Edit · Grade · Motion · Bengaluru, India</p>
-          <p>Quick Films productions &amp; founder freelance work — credits per project</p>
+          <p>Nila Studios · production house · founder freelance work — credits listed per project</p>
         </div>
       </div>
     </footer>

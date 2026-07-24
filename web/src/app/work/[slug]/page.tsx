@@ -122,8 +122,8 @@ export default async function CasePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(film)) }}
       />
       <CaseHeader film={film} />
-      <CasePlayer film={film} />
       <CaseDescription description={film.description} />
+      <CasePlayer film={film} />
       {hasFrames && <CaseFrames stills={film.stills!} index="03" />}
       {hasClips && <PostcardsGallery clips={film.clips!} index={clipsIndex} />}
       <CaseCredits credits={film.credits} index={creditsIndex} />

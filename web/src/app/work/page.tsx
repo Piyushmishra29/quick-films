@@ -88,15 +88,13 @@ export default function WorkPage() {
         </h1>
 
         <Reveal as="div" delay={0.1}>
-          <p className="mt-6 max-w-md text-muted">
-            Eight films, edited and graded end to end at Quick Films —
-            documentary, short-form, colour, and motion.
-          </p>
-          <p className="mt-4 max-w-xl text-[11px] uppercase leading-relaxed tracking-[0.16em] text-muted">
+          <p className="mt-6 max-w-xl text-[11px] uppercase leading-relaxed tracking-[0.16em] text-muted">
             The portfolio below showcases a combination of projects produced by
             Quick Films and selected freelance cinematography work by our
-            founder. Individual project credits indicate the role and
-            production company where applicable.
+            founder. Projects produced under Quick Films include scripting and
+            direction by our co-founder. Individual project credits clearly
+            indicate each contributor&apos;s role and the production company
+            where applicable.
           </p>
 
           <div className="mt-10 md:mt-14" aria-hidden="true">

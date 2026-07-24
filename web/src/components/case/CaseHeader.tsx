@@ -60,6 +60,14 @@ export default function CaseHeader({ film }: { film: Film }) {
         </h1>
       )}
 
+      {film.subtitle && (
+        <Reveal as="div" delay={0.08}>
+          <p className="mt-4 font-display text-[clamp(1.1rem,3.5vw,1.75rem)] font-medium uppercase tracking-tight text-yellow md:mt-6">
+            {film.subtitle}
+          </p>
+        </Reveal>
+      )}
+
       <Reveal as="div" delay={0.1}>
         <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] uppercase tracking-[0.22em] text-muted md:mt-8">
           <span className="text-text">{film.tags.join(" · ")}</span>

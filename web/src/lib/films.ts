@@ -16,6 +16,7 @@ export type Clip = {
 export type Film = {
   slug: string;
   title: string;
+  subtitle?: string; // optional distinguisher shown under the title when several films share a title (e.g. "Theyyam")
   year: string;
   seoTag?: string; // short service label appended to the SEO <title> (e.g. "Brand Film Edit")
   tags: string[]; // e.g. ["Documentary", "Colour Grade", "VO"]
@@ -68,17 +69,17 @@ export const films: Film[] = [
   },
   {
     slug: "dave-busters",
-    title: "District by Zomato",
+    title: "Arcade Film for Dave & Buster's",
     year: "2026",
     seoTag: "Venue Film — DoP",
     tags: ["Short-form", "Venue", "Interview"],
     duration: "1:14",
     description:
-      "A venue film for District by Zomato, shot at Dave & Buster's — bowling lanes, dart boards, racing rigs, a wall of sports screens and an arcade running full neon. Staff interviews cut against the games they can't stop talking about, with the venue's own light doing the grading. Freelance cinematography by our founder; produced by Denzong Films.",
+      "A venue film for District by Zomato, shot as a freelance Director of Photography — capturing the dynamic energy and immersive atmosphere of the Dave & Buster's Arcade Film campaign. Featured as part of the founder's cinematography portfolio.",
     credits: [
       { role: "Project", name: "District by Zomato" },
-      { role: "Director of Photography", name: "Pranay (freelance)" },
-      { role: "Production", name: "Denzong Films" },
+      { role: "Role", name: "Freelance DOP" },
+      { role: "Production House", name: "Denzong Films" },
     ],
     video: "/films/dave-busters.mp4",
     poster: "/films/dave-busters.jpg",
@@ -86,17 +87,17 @@ export const films: Film[] = [
   },
   {
     slug: "project-grain",
-    title: "Project Grain",
+    title: "F&B Digital Film",
     year: "2026",
     seoTag: "F&B Brand Film",
     tags: ["Brand Film", "F&B", "Interview"],
     duration: "1:41",
     description:
-      "Their words, not ours — and the edit takes them literally. Barrel-aged spirits catch the shelf light, a cocktail pours slow, salmon nigiri waits under a lamp, and a live jazz set slips into black and white. Shot low, cut unhurried, down to the book-a-table end card. Freelance cinematography by our founder for District by Zomato; produced by Denzong Films.",
+      "A digital campaign crafted for District by Zomato, capturing vibrant food, entertainment and lifestyle moments through dynamic, cinematic visuals. Shot as a freelance Director of Photography. Featured as part of the founder's cinematography portfolio.",
     credits: [
       { role: "Project", name: "District by Zomato" },
-      { role: "Director of Photography", name: "Pranay (freelance)" },
-      { role: "Production", name: "Denzong Films" },
+      { role: "Role", name: "Freelance DOP" },
+      { role: "Production House", name: "Denzong Films" },
     ],
     video: "/films/project-grain.mp4",
     poster: "/films/project-grain.jpg",
@@ -104,13 +105,14 @@ export const films: Film[] = [
   },
   {
     slug: "interview",
-    title: "Every Face Has a Moment",
+    title: "Travel Documentary | Niko Works Branding",
+    subtitle: "The Photographer",
     year: "2026",
     seoTag: "Documentary Edit",
     tags: ["Documentary", "Interview", "Colour Grade"],
     duration: "1:00",
     description:
-      "A working photographer, camera in his lap, explaining why he keeps going back — intercut with the faces he went to find. We built the edit around the cadence of his speech, set clean subtitles throughout, and graded the forest light to stay warm without giving up its shadows. One minute long; none of it filler.",
+      "A series of 12 cinematic short-form travel documentaries produced under Quick Films for Niko Works, with each film running between 30 and 60 seconds. Filmed across Northern Kerala, the series captures the region's rich cultural heritage through iconic traditions and ritual art forms, including Theyyam, Kathakali, Kambala, and other cultural experiences. The entire production was completed over an intensive 3-day shoot across multiple locations, with all 12 films delivered within one month. The project combined authentic storytelling with cinematic visuals to celebrate Kerala's people, traditions and landscapes.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Colour Grade", name: "Quick Films" },
@@ -123,13 +125,14 @@ export const films: Film[] = [
   },
   {
     slug: "kathakali",
-    title: "Kathakali at First Light",
+    title: "Travel Documentary | Niko Works Branding",
+    subtitle: "Kathakali",
     year: "2026",
     seoTag: "Colour Grade Reel",
     tags: ["Short-form", "Culture", "Colour Grade"],
     duration: "0:18",
     description:
-      "Full costume at golden hour: deliberate hands, painted eyes, a photographer circling for his frame. Eighteen seconds cut tight to the movement, the reds and greens graded to burn richly against the backlit forest. Blink and it's over — that's the point.",
+      "A series of 12 cinematic short-form travel documentaries produced under Quick Films for Niko Works, with each film running between 30 and 60 seconds. Filmed across Northern Kerala, the series captures the region's rich cultural heritage through iconic traditions and ritual art forms, including Theyyam, Kathakali, Kambala, and other cultural experiences. The entire production was completed over an intensive 3-day shoot across multiple locations, with all 12 films delivered within one month. The project combined authentic storytelling with cinematic visuals to celebrate Kerala's people, traditions and landscapes.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Colour Grade", name: "Quick Films" },
@@ -142,13 +145,14 @@ export const films: Film[] = [
   },
   {
     slug: "niko-theyyam",
-    title: "Theyyam by Firelight",
+    title: "Travel Documentary | Niko Works Branding",
+    subtitle: "Theyyam by Firelight",
     year: "2026",
     seoTag: "Documentary Colour Grade",
     tags: ["Documentary", "VO", "Colour Grade"],
     duration: "0:27",
     description:
-      "Shot after dark and lit almost entirely by fire. The voice-over carries the ritual beat for beat while the grade leans into ember reds and the gold of the dress. Twenty-seven seconds of Theyyam the way it's actually seen — close, hot, and hard to look away from.",
+      "A series of 12 cinematic short-form travel documentaries produced under Quick Films for Niko Works, with each film running between 30 and 60 seconds. Filmed across Northern Kerala, the series captures the region's rich cultural heritage through iconic traditions and ritual art forms, including Theyyam, Kathakali, Kambala, and other cultural experiences. The entire production was completed over an intensive 3-day shoot across multiple locations, with all 12 films delivered within one month. The project combined authentic storytelling with cinematic visuals to celebrate Kerala's people, traditions and landscapes.",
     credits: [
       { role: "Edit", name: "Quick Films" },
       { role: "Voice-over", name: "Quick Films" },
@@ -162,16 +166,15 @@ export const films: Film[] = [
   },
   {
     slug: "pe",
-    title: "Peter England",
+    title: "Peter England Launch Film",
     year: "2026",
     seoTag: "Menswear Brand Film",
     tags: ["Brand Film", "Menswear", "Retail"],
     duration: "0:49",
     description:
-      "A launch film for the Peter England flagship store: moodboards and material swatches becoming rails, mirrors and a finished floor. We assembled the story, built the type and titles, and graded the whole piece toward a cool, considered navy — the brand's own colour, worn by the film itself.",
+      "A launch film for Peter England, crafted to showcase the brand's latest collection through cinematic and contemporary visuals.",
     credits: [
-      { role: "Edit", name: "Quick Films" },
-      { role: "Colour Grade", name: "Quick Films" },
+      { role: "Role", name: "Freelance Director of Photography" },
     ],
     video: "/films/pe.mp4",
     poster: "/films/pe.jpg",
