@@ -3,69 +3,59 @@ import SectionRule from "./SectionRule";
 
 /**
  * Selected Frames — a filmstrip texture band echoing the reference's drifting
- * imagery strips. Two full-bleed rows of frame grabs (mixed disciplines) drift
- * slowly in opposite directions. This is ambient texture in the same family as
- * the title marquee (see .qf-filmstrip in globals.css) — not a new reveal beat.
- * Each row holds two identical copies of its frame list so a -50% translate
- * loops seamlessly; prefers-reduced-motion pins it still. Images lazy-load.
+ * imagery strips. Two full-bleed rows of graded travel clips (the "Postcards"
+ * set) drift slowly in opposite directions and auto-play, muted and looping —
+ * ambient motion in the same family as the title marquee (see .qf-filmstrip in
+ * globals.css). Each row holds two identical copies of its clip list so a -50%
+ * translate loops seamlessly; prefers-reduced-motion pins the drift still.
+ * Posters paint instantly while the muted loops warm up.
  */
 
-const ROW_A = [
-  { src: "/stills/frame-taxi.jpg", alt: "A woman with a film camera beside a yellow Ambassador taxi" },
-  { src: "/stills/frame-court.jpg", alt: "A running track at sunset" },
-  { src: "/stills/frame-golden-read.jpg", alt: "A silhouette reading against a golden sky" },
-  { src: "/stills/frame-grandmother.jpg", alt: "A grandmother at a sunlit table" },
-  { src: "/stills/frame-schoolbus.jpg", alt: "A woman in a red saree waving at a yellow school bus" },
-  { src: "/stills/frame-golf.jpg", alt: "A golfer mid-swing on the course" },
+type Clip = { src: string; poster: string; label: string };
+
+const CLIPS: Clip[] = [
+  { src: "/films/pc-drone.mp4", poster: "/films/pc-drone.jpg", label: "Tea country, Ooty — drone over misty slopes" },
+  { src: "/films/pc-yezdi.mp4", poster: "/films/pc-yezdi.jpg", label: "A Yezdi kicked to life on a fog-soaked coast road" },
+  { src: "/films/pc-bike.mp4", poster: "/films/pc-bike.jpg", label: "A headlight burning through blue rain-mist" },
+  { src: "/films/pc-surabhi.mp4", poster: "/films/pc-surabhi.jpg", label: "A twirl under the old trees, in black and white" },
+  { src: "/films/pc-kolkata.mp4", poster: "/films/pc-kolkata.jpg", label: "A Kolkata street mid-crossing" },
+  { src: "/films/pc-sunset.mp4", poster: "/films/pc-sunset.jpg", label: "The long walk into a pink Nilgiri sunset" },
 ];
 
-const ROW_B = [
-  { src: "/stills/frame-fiat.jpg", alt: "A woman beside a vintage blue car" },
-  { src: "/stills/frame-umbrella.jpg", alt: "A man under an umbrella in a rainy market street" },
-  { src: "/stills/frame-market.jpg", alt: "A street market scene in warm morning light" },
-  { src: "/stills/frame-brooch.jpg", alt: "A crystal brooch, macro detail" },
-  { src: "/stills/frame-theyyam-fire.jpg", alt: "A Theyyam performer wreathed in fire and smoke" },
-  { src: "/stills/frame-cafe.jpg", alt: "A woman on the phone in a garden cafe" },
-  { src: "/stills/frame-nightstall.jpg", alt: "A boy at a lamplit night stall" },
-  { src: "/stills/frame-saree.jpg", alt: "A woman in a saree backlit at golden hour" },
-];
+// Split across the two opposing drift rows.
+const ROW_A = [CLIPS[0], CLIPS[2], CLIPS[4]];
+const ROW_B = [CLIPS[5], CLIPS[3], CLIPS[1]];
 
-// Mobile re-cut of the same pool: three swipeable rows instead of two drifting
-// ones — the 90s drift reads as frozen on a phone, and a transform-animated
-// track can't be touch-scrolled anyway.
-const MOBILE_ROWS = [
-  ROW_A.slice(0, 5),
-  [ROW_A[5], ...ROW_B.slice(0, 4)],
-  ROW_B.slice(4),
-];
+function ClipTile({ clip, decorative }: { clip: Clip; decorative?: boolean }) {
+  return (
+    <div
+      className="relative aspect-video h-28 shrink-0 overflow-hidden rounded-sm ring-1 ring-white/10 sm:h-36 md:h-44"
+      aria-label={decorative ? undefined : clip.label}
+      aria-hidden={decorative ? "true" : undefined}
+    >
+      <video
+        src={clip.src}
+        poster={clip.poster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    </div>
+  );
+}
 
-function Strip({
-  frames,
-  reversed = false,
-}: {
-  frames: { src: string; alt: string }[];
-  reversed?: boolean;
-}) {
+function Strip({ clips, reversed = false }: { clips: Clip[]; reversed?: boolean }) {
   // Two copies for a seamless -50% loop.
-  const doubled = [...frames, ...frames];
+  const doubled = [...clips, ...clips];
   return (
     <div
       className={`qf-filmstrip ${reversed ? "qf-filmstrip--rev" : ""} gap-3 md:gap-4`}
     >
-      {doubled.map((f, i) => (
-        <div
-          key={`${f.src}-${i}`}
-          className="relative h-28 shrink-0 overflow-hidden rounded-sm ring-1 ring-white/10 sm:h-36 md:h-44"
-          aria-hidden={i >= frames.length ? "true" : undefined}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={f.src}
-            alt={i < frames.length ? f.alt : ""}
-            loading="lazy"
-            className="h-full w-auto max-w-none object-cover transition-transform duration-500 ease-out hover:scale-[1.03] motion-reduce:transition-none"
-          />
-        </div>
+      {doubled.map((c, i) => (
+        <ClipTile key={`${c.src}-${i}`} clip={c} decorative={i >= clips.length} />
       ))}
     </div>
   );
@@ -90,7 +80,7 @@ export default function SelectedFrames() {
         Selected Frames
       </h2>
 
-      {/* Full-bleed drifting rows, with soft edge fades so frames don't hard-cut
+      {/* Full-bleed drifting rows, with soft edge fades so clips don't hard-cut
           at the viewport edges. */}
       <div className="relative mt-10 md:mt-14">
         <div
@@ -103,30 +93,22 @@ export default function SelectedFrames() {
         />
         {/* Desktop: ambient drifting strips */}
         <div className="hidden space-y-4 md:block">
-          <Strip frames={ROW_A} />
-          <Strip frames={ROW_B} reversed />
+          <Strip clips={ROW_A} />
+          <Strip clips={ROW_B} reversed />
         </div>
 
-        {/* Mobile: three finger-swipeable snap rows (fills more of the
-            viewport and makes every frame reachable) */}
+        {/* Mobile: two finger-swipeable snap rows (the slow drift reads as
+            frozen on a phone, and a transform-animated track can't be
+            touch-scrolled anyway). */}
         <div className="space-y-3 md:hidden">
-          {MOBILE_ROWS.map((row, r) => (
+          {[ROW_A, ROW_B].map((row, r) => (
             <div
               key={r}
               className="qf-noscroll flex snap-x gap-3 overflow-x-auto scroll-px-5 px-5 [-webkit-overflow-scrolling:touch]"
             >
-              {row.map((f) => (
-                <div
-                  key={f.src}
-                  className="relative h-32 shrink-0 snap-start overflow-hidden rounded-sm ring-1 ring-white/10"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={f.src}
-                    alt={f.alt}
-                    loading="lazy"
-                    className="h-full w-auto max-w-none object-cover"
-                  />
+              {row.map((c) => (
+                <div key={c.src} className="shrink-0 snap-start">
+                  <ClipTile clip={c} />
                 </div>
               ))}
             </div>
@@ -136,7 +118,7 @@ export default function SelectedFrames() {
 
       <Reveal className="mx-auto mt-12 max-w-[1600px] px-5 md:mt-16 md:px-10">
         <p className="border-t border-white/12 pt-5 text-[11px] uppercase tracking-[0.22em] text-muted">
-          Frames from the cutting room — documentary, brand & short-form
+          Graded travel clips from the cutting room — shot &amp; coloured by Quick Films
         </p>
       </Reveal>
     </section>
